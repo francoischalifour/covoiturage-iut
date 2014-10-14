@@ -3,7 +3,7 @@
 // A modifier en fonction de la configuration
 
 define('DBHOST', "localhost");
-define('DBNAME', "iut_3");
+define('DBNAME', "iut_tp3");
 define('DBUSER', "root");
 define('DBPASSWD', "");
 define('ENV','dev');
