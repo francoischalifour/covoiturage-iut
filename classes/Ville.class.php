@@ -1,22 +1,22 @@
 <?php
 class Ville {
-    private $num;
-    private $nom;
+    private $vil_num;
+    private $vil_nom;
 
-    public function getNum() {
-        return $this->num;
+    public function getVilNum() {
+        return $this->vil_num;
     }
 
-    public function setNum($num) {
-        $this->num = $num;
+    public function setVilNum($vil_num) {
+        $this->vil_num = $vil_num;
     }
 
-    public function getNom() {
-        return $this->nom;
+    public function getVilNom() {
+        return $this->vil_nom;
     }
 
-    public function setNom($nom) {
-        $this->nom = $nom;
+    public function setVilNom($vil_nom) {
+        $this->vil_nom = $vil_nom;
         return $this;
     }
 }
