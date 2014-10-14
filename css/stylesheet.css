@@ -1,223 +1,231 @@
-a{
-	color:#222222;
-	text-decoration: none;		
+a {
+    text-decoration: none;
+    color: #222222;
 }
 
-a:visited{
-	color:#222222;
-	text-decoration: none;		
-}
-body{
-	background-color:#222222;;
-	font-family: "Segoe UI", Verdana, serif;
-	font-size:12pt;
-	margin:0;
-	padding:0;
+a:visited {
+    text-decoration: none;
+    color: #222222;
 }
 
-#header{
-	width:100%;
-	height:230px;
-	background-color:#222222;	
-	box-shadow:0 0 20px #000000;
-	border-bottom:solid #444444 8px;		
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI",Verdana,serif;
+    font-size: 12pt;
+    background-color: #222222;
 }
+
+#header {
+    width: 100%;
+    height: 230px;
+    border-bottom: solid #444444 8px;
+    background-color: #222222;
+    box-shadow: 0 0 20px #000000;
+}
+
 .colonne {
-  display:table-cell;
-  padding:25px;
+    display: table-cell;
+    padding: 25px;
 }
-.colonne:first-child {
 
+.colonne:first-child {
 }
 
 .colonne:nth-child(2) {
-	vertical-align:middle;
-	color:#CCCCCC;
-	font-size:32px;
-	font-weight:bold;		
-	text-shadow:1px 1px #111111, 2px 2px #000000;	
+    text-shadow: 1px 1px #111111,2px 2px #000000;
+    font-size: 32px;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #CCCCCC;
 }
+
 /*.colonne:nth-child(3) {
 		vertical-align:middle;
 }*/
 
-#entete{
-	width:1050px;
-	margin:auto;
-	display:table
+#entete {
+    display: table;
+    width: 1050px;
+    margin: auto;
+    position: relative;
 }
 
-#connect{
-	height:30px;
-	width:380px;
-	padding:10px;
-	position:absolute;
-	right:30px;
-	top:65%;
-	background-color:#AAAAAA;
-	border-radius:10px;
-	border:4px solid #111111;
-	box-shadow:0 0 5px #000000 inset;
-	color:#222222;
-	font-size:18px;
-	text-align:center;
-}
-#connect a{
-	color:#222222;
-	font-weight:bold;
-	text-decoration: none;	
-}
-#connect a :visited{
-	color:#222222;	
-	font-weight:bold;
-	text-decoration: none;
+#connect {
+    position: absolute;
+    top: 15%;
+    right: 30px;
+    width: 380px;
+    height: 30px;
+    padding: 10px;
+    border: 4px solid #111111;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #222222;
+    background-color: #AAAAAA;
+    box-shadow: 0 0 5px #000000 inset;
 }
 
-
-#corps{
-	float:left;
-	width: 100%;
-	background-color:#EDEDED;
+#connect a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #222222;
 }
 
-#menu{
-	float : left;
-	width: 20%;	
-	min-height:355px;
-	margin-left: 3px;
-	color:#222222;
-	font-size:15px;
-}
-#menu p{
-	font-weight:bold;
-}
-#menu a{
-	color:#222222;
-	text-decoration: none;	
-}
-#menu a :visited{
-	color:#222222;
-	text-decoration: none;
+#connect a:visited {
+    text-decoration: none;
+    font-weight: bold;
+    color: #222222;
 }
 
-#menuInt{
-	margin-top: 2px;
-	margin-left: 50px;	
-	min-height:367px;
+#corps {
+    float: left;
+    width: 100%;
+    background-color: #EDEDED;
 }
 
-#texte{
-	float:left ;
-	width: 79%;
-	margin-left: 5px;
-	text-align: center;
-	min-height:380px;
-	color:#222222;
+#menu {
+    float: left;
+    width: 20%;
+    margin-left: 3px;
+    min-height: 355px;
+    font-size: 15px;
+    color: #222222;
 }
 
-#spacer {     
-  clear: both; 
+#menu p {
+    font-weight: bold;
 }
 
-#footer{
-	width:100%;
-	height:50px;
-	padding-top:10px;
-	background-color:#222222;
-	border-top:solid #444444 8px;	
-	padding-top:20px;
-	position:absolute;
-	bottom:0px;
-	box-shadow:0 -5px 5px #858585;
-	position:relative;	
-	color:#CCCCCC;
-	font-size:12px;
-	text-align:center;
+#menu a {
+    text-decoration: none;
+    color: #222222;
+}
+
+#menu a:visited {
+    text-decoration: none;
+    color: #222222;
+}
+
+#menuInt {
+    margin-top: 2px;
+    margin-left: 50px;
+    min-height: 367px;
+}
+
+#texte {
+    float: left;
+    width: 79%;
+    margin-left: 5px;
+    min-height: 380px;
+    text-align: center;
+    color: #222222;
+}
+
+#spacer {
+    clear: both;
+}
+
+#footer {
+    position: absolute;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-top: 20px;
+    border-top: solid #444444 8px;
+    text-align: center;
+    font-size: 12px;
+    color: #CCCCCC;
+    background-color: #222222;
+    box-shadow: 0 -5px 5px #858585;
 }
 
 .centreImage {
     display: block;
+    margin-right: auto;
     margin-left: auto;
-    margin-right: auto }
-    
-.centrerBlock{
-	margin:auto;
-	width:200px;	
-}
-.labelC{
-	display: inline; 
-	padding-top:4px; 
-	margin-left:20px; 
 }
 
-.bouton{ 
-	border:2px #AAAAAA solid;
-	background-color:#444444; 
-	font-size:12pt;
-    font-weight:bold;
-    font-decoration:none; 
-    font-family:Verdana, Arial, sans-serif; 
-    color:#FFFFFF; 
-    width:125px;
-    height:40px;
-    border-radius:10px;
-    cursor:pointer;
-}
-.bouton:hover{ 
-	box-shadow:0 0 2px #000000;	
-	background-color:#555555; 
+.centrerBlock {
+    width: 200px;
+    margin: auto;
 }
 
-.champ{
-	background-color:#E0E0E0;
-	margin:0px 5px 5px 5px;
-	padding:5px;
-	font-size:12pt;
-   min-height:25px;
-   border-radius:10px;	
-   border:1px #222222 solid;
-	box-shadow:1px 1px 3px #000000 inset;
+.labelC {
+    display: inline;
+    margin-left: 20px;
+    padding-top: 4px;
 }
 
-.champ:focus{
-	box-shadow:1px 1px 5px #000000 inset;
+.bouton {
+    width: 125px;
+    height: 40px;
+    border: 2px #AAAAAA solid;
+    border-radius: 10px;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #444444;
+    cursor: pointer;
+    font-decoration: none;
 }
 
-label{
-	font-size:12pt;
-   font-weight:bold;	
+.bouton:hover {
+    background-color: #555555;
+    box-shadow: 0 0 2px #000000;
 }
 
-h1{
-	text-shadow:1px 1px 2px #333333;	
+.champ {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    min-height: 25px;
+    border: 1px #222222 solid;
+    border-radius: 10px;
+    font-size: 12pt;
+    background-color: #E0E0E0;
+    box-shadow: 1px 1px 3px #000000 inset;
+}
+
+.champ:focus {
+    box-shadow: 1px 1px 5px #000000 inset;
+}
+
+label {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+h1 {
+    text-shadow: 1px 1px 2px #333333;
 }
 
 .nb {
-	border:1px solid #333333;
-	}
-
-.espaceNB{
-	font-size:30px;position:relative;top:-8px;
-	}
-	
-* a:hover{
-
-	text-decoration: underline;
-}
-#menu a:hover{
-	text-decoration: underline;
-	font-weight: bold;
+    border: 1px solid #333333;
 }
 
-
-
-
-
-
-
-#connect a{
-	color:#222222;
-	font-weight:bold;
-	text-decoration: none;	
+.espaceNB {
+    position: relative;
+    top: -8px;
+    font-size: 30px;
 }
-#connect a :visited{
+
+* a:hover {
+    text-decoration: underline;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#connect a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #222222;
+}
+
+#connect a:visited {
