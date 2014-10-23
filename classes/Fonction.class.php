@@ -3,6 +3,10 @@ class Fonction {
 	private $fon_num;
 	private $fon_libelle;
 
+    public function __construct($valeurs = array()) {
+        $this->affecte($valeurs);
+    }
+
     public function getFonNum() {
         return $this->fon_num;
     }

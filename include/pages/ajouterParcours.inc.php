@@ -3,12 +3,17 @@
 if (!isset($_POST['formParcours'])) {
 	?>
 	<form action ="#" method ="post" name="formParcours">
-		<select class="champ" name="Ville1">
-		
+		<select class="champ" name="Ville1"> 
 		</select>
+
+		
 	</form>
 }
-
+else {
+	?>
+	<p>Le parcours a été ajouté</p>
+	<?php
+}
 
 
 

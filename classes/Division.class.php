@@ -3,6 +3,10 @@ class Division {
     private $div_nom;
     private $div_num;
 
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
     public function getDivNom() {
         return $this->div_nom;
     }

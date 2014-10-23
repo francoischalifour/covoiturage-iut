@@ -10,7 +10,7 @@ class SalarieManager {
 
     public function getAllSalarie() {
         $listeSalaries = array();
-        $sql = "SELECT per_num, sal_telprof, fon_num FROM salarie ORDER BY fon_nom";
+        $sql = "SELECT per_num, sal_telprof, fon_num FROM salarie";
         $requete = $this->db->prepare($sql);
         $requete->execute;
 
