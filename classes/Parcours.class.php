@@ -21,11 +21,11 @@ class Parcours {
                     break;
 
                 case 'vil_num1':
-                    $this->setParVilNum1($valeur);
+                    $this->setVilNum1($valeur);
                     break;
 
                 case 'vil_num2':
-                    $this->setParVilNum2($valeur);
+                    $this->setVilNum2($valeur);
                     break;
             }
         }

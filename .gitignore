@@ -12,3 +12,9 @@ Desktop.ini
 ## MacOS
 ############
 .DS_Store
+
+############
+## Config
+############
+
+config.inc.php
