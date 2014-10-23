@@ -17,18 +17,18 @@ class DivisionManager{
 	}
 
 	public function getAllDivision() {
-	    $listeDivision = array();
+	    $listeDivisions = array();
 	    $sql = "SELECT div_num, dep_nom FROM division ORDER BY div_num";
 	    $requete = $this->db->prepare($sql);
 	    $requete->execute;
 
 	    while ($division = $requete->fetch(PDO::FETCH_ASSOC)) {
-	        $listeDivision[] = new Division($division);
+	        $listeDivisions[] = new Division($division);
 	    }
 
 	    $requete->closeCursor();
 
-	    return $listeDivision;
+	    return $listeDivisions;
 	}
 	
 }

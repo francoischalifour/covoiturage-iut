@@ -5,10 +5,10 @@ class Departement {
     private $vil_num
 
 
-    public function __construct($db) {
-        $this->db = $db;
+    public function __construct($valeurs = array()) {
+        $this->affecte($valeurs);
     }
-
+    
     public function getDepNum() {
         return $this->dep_num;
     }
