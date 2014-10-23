@@ -7,7 +7,7 @@ class VilleManager {
     }
 
     public function add($ville) {
-        $requete = $this->db->prepare("INSERT INTO ville VALUES (vil_nom) VALUES (:nom);");
+        $requete = $this->db->prepare("INSERT INTO ville (vil_nom) VALUES (:nom);");
         $requete->bindValue(':nom', $ville->getVilNom());
 
         $retour = $requete->execute();

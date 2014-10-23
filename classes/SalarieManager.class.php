@@ -6,6 +6,8 @@ class SalarieManager {
         $this->db = $db;
     }
 
+    // Ajout
+
     public function getAllSalarie() {
         $listeSalaries = array();
         $sql = "SELECT per_num, sal_telprof, fon_num FROM salarie ORDER BY fon_nom";
