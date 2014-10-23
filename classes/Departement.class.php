@@ -9,6 +9,24 @@ class Departement {
         $this->affecte($valeurs);
     }
 
+    public function affecte($donnees) {
+        foreach ($donnees as $attribut => $valeur) {
+            switch ($attribut) {
+                case 'dep_num':
+                    $this->setDepNum($valeur);
+                    break;
+
+                case 'dep_nom':
+                    $this->setDepNom($valeur);
+                    break;
+                    
+                case 'vil_num':
+                    $this->setVilNum($valeur);
+                    break;
+            }
+        }
+    }
+
     public function getDepNum() {
         return $this->dep_num;
     }
@@ -37,20 +55,6 @@ class Departement {
         $this->vil_num = $vil_num;
 
         return $this;
-    }
-
-    public function affecte($donnees) {
-        foreach ($donnees as $attribut => $valeur) {
-            switch ($attribut) {
-                case 'dep_num':
-                    $this->setDepNum($valeur);
-                    break;
-
-                case 'dep_nom':
-                    $this->setDepNom($valeur);
-                    break;
-            }
-        }
     }
 
 }
