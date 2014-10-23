@@ -1,33 +1,33 @@
 <?php
 class FonctionManager{
-	private $db;
+    private $db;
 
     public function __construct($db) {
-    	$this->db = $db;
-	}
-	
+        $this->db = $db;
+    }
+
     public function add($fonction) {
-	    $requete = $this->db->prepare("INSERT INTO fonction VALUES (fon_libelle) VALUES (:libelle);");
-	    $requete->bindValue(':libelle', $fonction->getFonNum());
+        $requete = $this->db->prepare("INSERT INTO fonction VALUES (fon_libelle) VALUES (:libelle);");
+        $requete->bindValue(':libelle', $fonction->getFonNum());
 
-	    $retour = $requete->execute();
+        $retour = $requete->execute();
 
-	    return $retour;
-	}
+        return $retour;
+    }
 
-	public function getAllfonction() {
-	    $listefonctions = array();
-	    $sql = "SELECT fon_num, fon_libelle FROM fonction";
-	    $requete = $this->db->prepare($sql);
-	    $requete->execute;
+    public function getAllfonction() {
+        $listefonctions = array();
+        $sql = "SELECT fon_num, fon_libelle FROM fonction";
+        $requete = $this->db->prepare($sql);
+        $requete->execute;
 
-	    while ($fonction = $requete->fetch(PDO::FETCH_ASSOC)) {
-	        $listfonctions[] = new fonction($fonction);
-	    }
+        while ($fonction = $requete->fetch(PDO::FETCH_ASSOC)) {
+            $listfonctions[] = new fonction($fonction);
+        }
 
-	    $requete->closeCursor();
+        $requete->closeCursor();
 
-	    return $listefonctions;
-	}
+        return $listefonctions;
+    }
 
 }

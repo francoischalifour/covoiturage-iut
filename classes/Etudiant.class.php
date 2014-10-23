@@ -8,22 +8,22 @@ class Etudiant {
         $this->affecte($valeurs);
     }
 
-    public function affecte ($donnes) {
-    	foreach ($$donnes as $valeur) {
-    		switch ($attribut) {
-    			case 'per_num':
-    				$this->setPerNum($valeur);
-    				break;
+    public function affecte ($donnees) {
+        foreach ($donnees as $valeur) {
+            switch ($attribut) {
+                case 'per_num':
+                    $this->setPerNum($valeur);
+                    break;
 
-    			case 'dep_num':
-    				$this->setDepNum($valeur);
-    				break;
+                case 'dep_num':
+                    $this->setDepNum($valeur);
+                    break;
 
-    			case 'div_num':
-    				$this->setDivNum($valeur);
-    				break;	
-    		}
-    	}
+                case 'div_num':
+                    $this->setDivNum($valeur);
+                    break;
+            }
+        }
     }
 
     public function getPerNum() {
@@ -45,7 +45,7 @@ class Etudiant {
     public function getDepNum() {
         return $this->dep_num;
     }
-   
+
     public function setDepNum($dep_num) {
         $this->dep_num = $dep_num;
 
@@ -55,7 +55,7 @@ class Etudiant {
     public function getDivNum() {
         return $this->div_num;
     }
-    
+
     public function setDivNum($div_num) {
         $this->div_num = $div_num;
 
