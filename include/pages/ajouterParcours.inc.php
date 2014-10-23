@@ -1,38 +1,29 @@
 <h1>Ajouter un parcours</h1>
 <?php
 if (!isset($_POST['formParcours'])) {
-	?>
-	<form action ="#" method ="post" name="formParcours">
-		<select class="champ" name="Ville1"> 
-		</select>
+?>
+<form action ="#" method ="post" name="formParcours">
+    <label for="ville1">Ville de départ :</label>
+    <select class="champ" name="ville1" id="ville1">
+        <option value="">Sélectionnez la ville</option>
+        <!-- villes ... -->
+    </select>
 
-		
-	</form>
-}
-else {
-	?>
-	<p>Le parcours a été ajouté</p>
-	<?php
-}
+    <label for="nom">Ville d'arrivée :</label>
+    <select class="champ" name="ville2" id="ville2">
+            <option value="">Sélectionnez la ville</option>
+            <!-- villes ... -->
+        </select>
 
+    <label for="nbKm">Nombre de kilomètres :</label>
+    <input type="text" placeholder="Nombre de kilomètres" class="champ" name="nbKm">
 
-
-
-
-
+    <button type="submit" class="bouton">Valider</button>
+</form>
 <?php
-if (!isset($_POST['formVille'])) {
-    ?>
-    <form action="#" method="post" name="formVille">
-        <label for="nom">Nom :</label>
-        <input type="text" placeholder="Nom de la ville" class="champ" name="nom">
-        <button type="submit" class="bouton">Valider</button>
-    </form>
-    <?php
 }
 else {
-    // traitement
-    ?>
-    <p>La ville <?php echo $_POST['nom'] ?> a bien été ajoutée</p>
-    <?php
+?>
+    <p>Le parcours a été ajouté</p>
+<?php
 }

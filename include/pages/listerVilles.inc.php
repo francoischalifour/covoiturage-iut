@@ -1,7 +1,9 @@
 <?php
-/*require_once("../autoload.inc.php");
+require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
 $villeManager = new VilleManager($pdo);
-$villes = $villeManager->getAllProduit();*/
+$villes = $villeManager->getAllVille();
 ?>
+
+<h1>Liste des villes</h1>

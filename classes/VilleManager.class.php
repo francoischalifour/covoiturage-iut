@@ -19,7 +19,7 @@ class VilleManager {
         $listeVilles = array();
         $sql = "SELECT vil_num, vil_nom FROM ville ORDER BY vil_nom";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($ville = $requete->fetch(PDO::FETCH_ASSOC)) {
             $listeVilles[] = new Ville($ville);
