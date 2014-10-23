@@ -8,6 +8,10 @@ class Personne {
     private $per_login;
     private $per_pwd;
 
+    public function __construct($valeurs = array()) {
+        $this->affecte($valeurs);
+    }
+
     public function getPerNum() {
         return $this->per_num;
     }
