@@ -2,13 +2,13 @@
 class Departement {
     private $dep_num;
     private $dep_nom;
-    private $vil_num
+    private $vil_num;
 
 
     public function __construct($valeurs = array()) {
         $this->affecte($valeurs);
     }
-    
+
     public function getDepNum() {
         return $this->dep_num;
     }
