@@ -18,6 +18,7 @@ if (!isset($_POST['formParcours'])) {
     <label for="nbKm">Nombre de kilomètres :</label>
     <input type="text" placeholder="Nombre de kilomètres" class="champ" name="nbKm">
 
+    <br>
     <button type="submit" class="bouton">Valider</button>
 </form>
 <?php

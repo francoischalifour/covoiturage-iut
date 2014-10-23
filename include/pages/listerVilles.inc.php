@@ -8,7 +8,7 @@ $villes = $villeManager->getAllVille();
 
 <h1>Liste des villes</h1>
 
-<table>
+<table class="table">
     <tr>
         <th>Numéro</th>
         <th>Nom</th>

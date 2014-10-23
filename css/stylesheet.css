@@ -14,6 +14,7 @@ body {
     font-family: "Segoe UI",Verdana,serif;
     font-size: 12pt;
     background-color: #222222;
+    overflow-x: hidden;
 }
 
 #header {
@@ -83,6 +84,7 @@ body {
     float: left;
     width: 100%;
     background-color: #EDEDED;
+    padding-bottom: 48px;
 }
 
 #menu {
@@ -228,4 +230,23 @@ h1 {
     color: #222222;
 }
 
-#connect a:visited {
+.table {
+    border: 1px solid #000;
+}
+
+.table tr {
+    background-color: #fff;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.table th {
+    background-color: #ddd;
+}
+
+.table td, .table th {
+    min-width: 150px;
+    height: 40px;
+}

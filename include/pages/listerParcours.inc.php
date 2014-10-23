@@ -8,7 +8,7 @@ $parcours = $parcoursManager->getAllParcours();
 
 <h1>Liste des parcours proposés</h1>
 
-<table>
+<table class="table">
     <tr>
         <th>Numéro</th>
         <th>Ville de départ</th>
