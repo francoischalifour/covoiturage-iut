@@ -21,8 +21,8 @@ class VilleManager {
         $requete = $this->db->prepare($sql);
         $requete->execute;
 
-        while ($produit = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listVilles[] = new Ville($ville);
+        while ($ville = $requete->fetch(PDO::FETCH_ASSOC)) {
+            $listeVilles[] = new Ville($ville);
         }
 
         $requete->closeCursor();

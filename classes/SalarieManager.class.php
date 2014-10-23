@@ -1,4 +1,23 @@
 <?php
-class SalarieManager{
-	
+class SalarieManager {
+    private $db;
+
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
+    public function getAllSalarie() {
+        $listeSalaries = array();
+        $sql = "SELECT per_num, sal_telprof, fon_num FROM salarie ORDER BY fon_nom";
+        $requete = $this->db->prepare($sql);
+        $requete->execute;
+
+        while ($salarie = $requete->fetch(PDO::FETCH_ASSOC)) {
+            $listeSalaries[] = new Salarie($salarie);
+        }
+
+        $requete->closeCursor();
+
+        return $listeSalaries;
+    }
 }
