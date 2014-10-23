@@ -4,7 +4,7 @@ class Salarie {
     private $sal_telprof;
     private $fon_num;
 
-    function function __construct($valeurs = array()) {
+    public function __construct($valeurs = array()) {
         $this->affecte($valeurs);
     }
 

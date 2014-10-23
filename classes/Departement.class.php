@@ -38,4 +38,19 @@ class Departement {
 
         return $this;
     }
+
+    public function affecte($donnees) {
+        foreach ($donnees as $attribut => $valeur) {
+            switch ($attribut) {
+                case 'dep_num':
+                    $this->setDepNum($valeur);
+                    break;
+
+                case 'dep_nom':
+                    $this->setDepNom($valeur);
+                    break;
+            }
+        }
+    }
+
 }
