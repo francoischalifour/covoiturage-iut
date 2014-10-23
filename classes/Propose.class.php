@@ -1,5 +1,7 @@
 <?php
 class Propose {
+    private $par_num;
+    private $per_num;
     private $pro_date;
     private $pro_time;
     private $pro_place;
@@ -17,6 +19,7 @@ class Propose {
                 case "vil_num":
                     $this->setVilNum($valeur);
                     break;
+
                 case "vil_nom":
                     $this->setVilNom($valeur);
                     break;
@@ -60,6 +63,26 @@ class Propose {
 
     public function setProSens($pro_sens) {
         $this->pro_sens = $pro_sens;
+
+        return $this;
+    }
+
+    public function getParNum() {
+        return $this->par_num;
+    }
+
+    public function setParNum($par_num) {
+        $this->par_num = $par_num;
+
+        return $this;
+    }
+
+    public function getPerNum() {
+        return $this->per_num;
+    }
+
+    public function setPerNum($per_num) {
+        $this->per_num = $per_num;
 
         return $this;
     }
