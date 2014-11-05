@@ -7,6 +7,19 @@ class Division {
         $this->affecte($valeurs);
     }
 
+    public function affecte (donnees) {
+        foreach ($donnees as $attribut => $valeur) {
+            switch ($attribut) {
+                case 'div_num':
+                    $this->setDivNum($valeur);
+                    break;
+                case 'div_nom':
+                    $this->setDivNom($valeur);
+                    break;
+            }
+        }
+    }
+
     public function getDivNom() {
         return $this->div_nom;
     }
@@ -25,18 +38,5 @@ class Division {
         $this->div_num = $div_num;
 
         return $this;
-    }
-
-    public function affecte (donnees) {
-        foreach ($donnees as $attribut => $valeur) {
-            switch ($attribut) {
-                case 'div_num':
-                    $this->setDivNum($valeur);
-                    break;
-                case 'div_nom':
-                    $this->setDivNom($valeur);
-                    break;
-            }
-        }
     }
 }
