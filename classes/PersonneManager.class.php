@@ -28,7 +28,7 @@ class PersonneManager {
         $sql = "SELECT per_num, per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd
                     FROM personne ORDER BY per_nom";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($personne = $requete->fetch(PDO::FETCH_ASSOC)) {
             $listePersonnes[] = new Personne($personne);

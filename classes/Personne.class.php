@@ -14,33 +14,35 @@ class Personne {
 
     public function affecte($donnees) {
         foreach ($donnees as $attribut => $valeur) {
-            case 'per_num':
-                $this->setPerNum($valeur);
-                break;
+            switch($attribut) {
+                case 'per_num':
+                    $this->setPerNum($valeur);
+                    break;
 
-            case 'per_nom':
-                $this->setPerNom($valeur);
-                break;
+                case 'per_nom':
+                    $this->setPerNom($valeur);
+                    break;
 
-            case 'per_prenom':
-                $this->setPerPrenom($valeur);
-                break;
+                case 'per_prenom':
+                    $this->setPerPrenom($valeur);
+                    break;
 
-            case 'per_tel':
-                $this->setPerTel($valeur);
-                break;
+                case 'per_tel':
+                    $this->setPerTel($valeur);
+                    break;
 
-            case 'per_mail':
-                $this->setPerMail($valeur);
-                break;
+                case 'per_mail':
+                    $this->setPerMail($valeur);
+                    break;
 
-            case 'per_login':
-                $this->setPerLogin($valeur);
-                break;
+                case 'per_login':
+                    $this->setPerLogin($valeur);
+                    break;
 
-            case 'per_pwd':
-                $this->setPerPwd($valeur);
-                break;
+                case 'per_pwd':
+                    $this->setPerPwd($valeur);
+                    break;
+            }
         }
     }
 
