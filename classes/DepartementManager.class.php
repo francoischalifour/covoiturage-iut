@@ -20,10 +20,10 @@ class DepartementManager {
         $listeDepartements = array();
         $sql = "SELECT dep_num, dep_nom FROM departement ORDER BY dep_num";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($departement = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listDepartements[] = new Departement($departement);
+            $listeDepartements[] = new Departement($departement);
         }
 
         $requete->closeCursor();

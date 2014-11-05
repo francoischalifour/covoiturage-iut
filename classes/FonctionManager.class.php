@@ -15,14 +15,14 @@ class FonctionManager{
         return $retour;
     }
 
-    public function getAllfonction() {
+    public function getAllFonction() {
         $listefonctions = array();
         $sql = "SELECT fon_num, fon_libelle FROM fonction";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($fonction = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listfonctions[] = new fonction($fonction);
+            $listefonctions[] = new Fonction($fonction);
         }
 
         $requete->closeCursor();

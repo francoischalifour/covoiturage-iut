@@ -7,7 +7,7 @@ $pdo = new Mypdo();
 $villeManager = new VilleManager($pdo);
 $villes = $villeManager->getAllVille();
 ?>
-<form action ="#" method ="post" name="formParcours">
+<form action ="#" method ="post">
     <label for="ville1">Ville de départ :</label>
     <select class="champ" name="ville1" id="ville1">
         <option value="">Sélectionnez la ville</option>
@@ -36,25 +36,23 @@ $villes = $villeManager->getAllVille();
     <input type="text" placeholder="Nombre de kilomètres" class="champ" name="nbKm">
 
     <br>
+
     <button type="submit" class="bouton">Valider</button>
 </form>
 <?php
-}
-else {
+} else {
     $db = new Mypdo();
     $manager = new ParcoursManager($db);
 
     $parcours = new Parcours (
         array(
+            'nbKm' => $_POST['nbKm'],
             'ville1' => $_POST['ville1'],
-            'ville2' => $_POST['ville2'],
-            'nbKm' => $_POST['nbKm']
-
+            'ville2' => $_POST['ville2']
             )
         );
     $manager->add($parcours);
     ?>
-?>
     <p>Le parcours entre <?php echo $_POST['ville1'] ?> et <?php echo $_POST['ville2'] ?> a été ajouté. Il fait <?php echo $_POST['nbKm'] ?>.</p>
-<?php
+    <?php
 }

@@ -10,6 +10,7 @@ class PersonneManager {
         $requete = $this->db->prepare("INSERT INTO personne
             (per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd)
             VALUES (:nom, :prenom, :tel, :mail, :login, :pwd);");
+
         $requete->bindValue(':nom', $personne->getPerNom());
         $requete->bindValue(':prenom', $personne->getPerPrenom());
         $requete->bindValue(':tel', $personne->getPerTel());
