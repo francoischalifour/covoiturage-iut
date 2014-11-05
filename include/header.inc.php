@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <div class="colonne">
-                    Covoiturage de l'IUT,<br />Partagez plus que votre véhicule !!!
+                    Covoiturage de l'IUT,<br />Partagez plus que votre véhicule !
                 </div>
             </div>
             <div id="connect">
