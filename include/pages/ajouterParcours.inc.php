@@ -2,14 +2,14 @@
 <?php
 require_once("include/autoload.inc.php");
 
-if (empty($_POST['ville1']) && empty($_POST['ville2'])) {
+if (empty($_POST['vil_num1']) && empty($_POST['vil_num2'])) {
 $pdo = new Mypdo();
 $villeManager = new VilleManager($pdo);
 $villes = $villeManager->getAllVille();
 ?>
 <form action ="#" method ="post">
-    <label for="ville1">Ville de départ :</label>
-    <select class="champ" name="ville1" id="ville1">
+    <label for="vil_num1">Ville de départ :</label>
+    <select class="champ" name="vil_num1" id="vil_num1">
         <option value="">Sélectionnez la ville</option>
         <?php
             foreach ($villes as $ville) {
@@ -21,7 +21,7 @@ $villes = $villeManager->getAllVille();
     </select>
 
     <label for="nom">Ville d'arrivée :</label>
-    <select class="champ" name="ville2" id="ville2">
+    <select class="champ" name="vil_num2" id="vil_num2">
             <option value="">Sélectionnez la ville</option>
             <?php
                 foreach ($villes as $ville) {
@@ -32,8 +32,8 @@ $villes = $villeManager->getAllVille();
             ?>
         </select>
 
-    <label for="nbKm">Nombre de kilomètres :</label>
-    <input type="text" placeholder="Nombre de kilomètres" class="champ" name="nbKm">
+    <label for="par_km">Nombre de kilomètres :</label>
+    <input type="text" placeholder="Nombre de kilomètres" class="champ" name="par_km">
 
     <br>
 
@@ -46,13 +46,13 @@ $villes = $villeManager->getAllVille();
 
     $parcours = new Parcours (
         array(
-            'nbKm' => $_POST['nbKm'],
-            'ville1' => $_POST['ville1'],
-            'ville2' => $_POST['ville2']
+            'par_km' => $_POST['par_km'],
+            'vil_num1' => $_POST['vil_num1'],
+            'vil_num2' => $_POST['vil_num2']
             )
         );
     $manager->add($parcours);
     ?>
-    <p>Le parcours entre <?php echo $_POST['ville1'] ?> et <?php echo $_POST['ville2'] ?> a été ajouté. Il fait <?php echo $_POST['nbKm'] ?>.</p>
+    <p>Le parcours entre <?php echo $_POST['vil_num1'] ?> et <?php echo $_POST['vil_num2'] ?> a été ajouté. Il fait <?php echo $_POST['par_km'] ?> km.</p>
     <?php
 }
