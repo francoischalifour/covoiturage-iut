@@ -7,8 +7,8 @@ if (empty($_POST['vil_nom'])) {
     ?>
     <form action="#" method="post">
         <label for="vil_nom">Nom :</label>
-        <input type="text" placeholder="Nom de la ville" class="champ" name="vil_nom">
-        <button type="submit" class="bouton">Valider</button>
+        <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom">
+        <button type="submit" class="btn btn-primary">Valider</button>
     </form>
     <?php
 } else {

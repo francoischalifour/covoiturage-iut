@@ -9,7 +9,7 @@ $villes = $villeManager->getAllVille();
 ?>
 <form action ="#" method ="post">
     <label for="vil_num1">Ville de départ :</label>
-    <select class="champ" name="vil_num1" id="vil_num1">
+    <select class="form-control" name="vil_num1" id="vil_num1">
         <option value="">Sélectionnez la ville</option>
         <?php
             foreach ($villes as $ville) {
@@ -21,7 +21,7 @@ $villes = $villeManager->getAllVille();
     </select>
 
     <label for="nom">Ville d'arrivée :</label>
-    <select class="champ" name="vil_num2" id="vil_num2">
+    <select class="form-control" name="vil_num2" id="vil_num2">
             <option value="">Sélectionnez la ville</option>
             <?php
                 foreach ($villes as $ville) {
@@ -33,11 +33,11 @@ $villes = $villeManager->getAllVille();
         </select>
 
     <label for="par_km">Nombre de kilomètres :</label>
-    <input type="text" placeholder="Nombre de kilomètres" class="champ" name="par_km">
+    <input type="text" placeholder="Nombre de kilomètres" class="form-control" name="par_km">
 
     <br>
 
-    <button type="submit" class="bouton">Valider</button>
+    <button type="submit" class="btn btn-primary">Valider</button>
 </form>
 <?php
 } else {

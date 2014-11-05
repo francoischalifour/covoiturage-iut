@@ -6,39 +6,55 @@ if (empty($_POST['per_nom'])) {
     <h1>Ajouter une personne</h1>
 
     <form action="#" method="post">
-        <label for="per_nom">Nom :</label>
-        <input type="text" placeholder="Nom de la personne" class="champ" name="per_nom">
+        <div class="container">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="per_nom">Nom :</label>
+                    <input type="text" placeholder="Nom de la personne" class="form-control" name="per_nom">
+                </div>
 
-        <label for="per_prenom">Prénom :</label>
-        <input type="text" placeholder="Prénom de la personne" class="champ" name="per_prenom">
+                <div class="form-group">
+                    <label for="per_prenom">Prénom :</label>
+                    <input type="text" placeholder="Prénom de la personne" class="form-control" name="per_prenom">
+                </div>
 
-        <br>
+                <div class="form-group">
+                    <label for="per_tel">Téléphone :</label>
+                    <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel">
+                </div>
+            </div>
 
-        <label for="per_tel">Téléphone :</label>
-        <input type="text" placeholder="Téléphone de la personne" class="champ" name="per_tel">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="per_mail">Mail :</label>
+                    <input type="text" placeholder="Mail de la personne" class="form-control" name="per_mail">
+                </div>
 
-        <label for="per_mail">Mail :</label>
-        <input type="text" placeholder="Mail de la personne" class="champ" name="per_mail">
+                <div class="form-group">
+                    <label for="per_login">Login :</label>
+                    <input type="text" placeholder="Login de la personne" class="form-control" name="per_login">
+                </div>
 
-        <br>
+                <div class="form-group">
+                    <label for="per_mdp">Mot de passe :</label>
+                    <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_mdp">
+                </div>
+            </div>
+        </div>
 
-        <label for="per_login">Login :</label>
-        <input type="text" placeholder="Login de la personne" class="champ" name="per_login">
-
-        <label for="per_mdp">Mot de passe :</label>
-        <input type="password" placeholder="Mot de passe de la personne" class="champ" name="per_mdp">
-
-        <br>
-
-        <p class="text-center">
-            <label for="per_cat">Catégorie :</label>
+        <div class="form-group text-center">
+            <div class="form-group">
+                <label for="per_cat">Catégorie :</label>
+            </div>
             <label for="1"><input type="radio" name="per_cat" id="1" value="1" checked="checked">Etudiant</label>
             <label for="2"><input type="radio" name="per_cat" id="2" value="2">Personnel</label>
-        </p>
+        </div>
 
         <br>
 
-        <button type="submit" class="bouton">Valider</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
     </form>
     <?php
 } else {
@@ -76,7 +92,7 @@ if (empty($_POST['per_nom'])) {
 
             <br>
 
-            <button type="submit" class="bouton">Valider</button>
+            <button type="submit" class="btn btn-primary">Valider</button>
         </form>
     <?php
     }  else if ($_POST['per_cat'] == "2") {
@@ -84,7 +100,7 @@ if (empty($_POST['per_nom'])) {
             <h1>Ajouter un salarié</h1>
             <form action="#" method="post">
             <label for="per_telpro">Téléphone professionnel :</label>
-            <input type="text" placeholder="Téléphone professionnel de la personne" class="champ" name="per_telpro">
+            <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="per_telpro">
 
             <br>
 
@@ -105,7 +121,7 @@ if (empty($_POST['per_nom'])) {
 
             <br>
 
-            <button type="submit" class="bouton">Valider</button>
+            <button type="submit" class="btn btn-primary">Valider</button>
         </form>
         <?php
     } else {
