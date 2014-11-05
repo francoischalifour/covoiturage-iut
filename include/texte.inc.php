@@ -5,6 +5,7 @@ if (!empty($_GET["page"])) {
 } else {
     $page = 0;
 }
+
 switch ($page) {
     /*
      * Personnes
