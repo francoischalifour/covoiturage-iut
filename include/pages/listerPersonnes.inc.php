@@ -35,6 +35,18 @@ if (empty($_GET['user'])) {
     echo $numero;
 ?>
 <h1>Détail sur le salarié</h1>
+<table class="table">
+    <tr>
+        <th>Prénom</th>
+        <th>Mail</th>
+        <th>Tel</th>
+        <th>Département</th>
+        <th>Ville</th>
+    </tr>
+    <tr>
+
+    </tr>
+</table>
 <?php
 }
 ?>
