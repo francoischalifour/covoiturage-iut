@@ -6,6 +6,9 @@ $personneManager = new PersonneManager($pdo);
 $personnes = $personneManager->getAllPersonne();
 ?>
 
+<?php
+if (empty($_GET['user'])) {
+?>
 <h1>Liste des personnes enregistrées</h1>
 
 <table class="table">
@@ -18,7 +21,7 @@ $personnes = $personneManager->getAllPersonne();
     foreach ($personnes as $personne) {
     ?>
     <tr>
-        <td><?php echo $personne->getPerNum() ?></td>
+        <td><a href="<?php echo $_SERVER['REQUEST_URI'] ?>&user=<?php echo $personne->getPerNum() ?>"><?php echo $personne->getPerNum() ?></a></td>
         <td><?php echo $personne->getPerNom() ?></td>
         <td><?php echo $personne->getPerPrenom() ?></td>
     </tr>
@@ -26,3 +29,12 @@ $personnes = $personneManager->getAllPersonne();
     }
     ?>
 </table>
+<?php
+} else {
+    $numero = $_GET['user'];
+    echo $numero;
+?>
+<h1>Détail sur le salarié</h1>
+<?php
+}
+?>

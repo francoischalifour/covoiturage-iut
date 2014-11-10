@@ -1,14 +1,15 @@
-<?php
-require_once("include/header.inc.php");
-?>
-<div id="corps">
-<?php
-require_once("include/menu.inc.php");
-require_once("include/texte.inc.php");
-?>
+<?php require_once("include/header.inc.php"); ?>
+<div class="row">
+    <div class="col-md-3">
+        <?php require_once("include/menu.inc.php"); ?>
+    </div>
+    <div class="col-md-9">
+        <?php require_once("include/texte.inc.php");  ?>
+    </div>
 </div>
 
-<div id="spacer"></div>
-<?php
-require_once("include/footer.inc.php");
-?>
+<div class="row">
+    <div class="col-md-12">
+        <?php require_once("include/footer.inc.php"); ?>
+    </div>
+</div>

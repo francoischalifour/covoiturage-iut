@@ -10,7 +10,7 @@ class EtudiantManager{
         $listeEtudiants = array();
         $sql = "SELECT per_num, dep_num, div_num FROM etudiant";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($etudiant = $requete->fetch(PDO::FETCH_ASSOC)) {
             $listeEtudiants[] = new Salarie($etudiant);
@@ -20,5 +20,5 @@ class EtudiantManager{
 
         return $listeEtudiants;
     }
-	
+
 }

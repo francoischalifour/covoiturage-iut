@@ -8,7 +8,7 @@ class Etudiant {
         $this->affecte($valeurs);
     }
 
-    public function affecte ($donnees) {
+    public function affecte($donnees) {
         foreach ($donnees as $valeur) {
             switch ($attribut) {
                 case 'per_num':

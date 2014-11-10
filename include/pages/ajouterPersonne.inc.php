@@ -1,7 +1,9 @@
 <?php
 require_once("include/autoload.inc.php");
+//session_destroy();
+var_dump($_SESSION);
 
-if (empty($_POST['per_nom'])) {
+if (!isset($_POST['per_nom'])) {
     ?>
     <h1>Ajouter une personne</h1>
 
@@ -36,8 +38,8 @@ if (empty($_POST['per_nom'])) {
                 </div>
 
                 <div class="form-group">
-                    <label for="per_mdp">Mot de passe :</label>
-                    <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_mdp">
+                    <label for="per_pwd">Mot de passe :</label>
+                    <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_pwd">
                 </div>
             </div>
         </div>
@@ -58,13 +60,36 @@ if (empty($_POST['per_nom'])) {
     </form>
     <?php
 } else {
+    $_SESSION['per_nom'] = $_POST['per_nom'];
+    $_SESSION['per_prenom'] = $_POST['per_prenom'];
+    $_SESSION['per_tel'] = $_POST['per_tel'];
+    $_SESSION['per_mail'] = $_POST['per_mail'];
+    $_SESSION['per_login'] = $_POST['per_login'];
+    $_SESSION['per_pwd'] = $_POST['per_pwd'];
+    $_SESSION['per_cat'] = $_POST['per_cat'];
+
+    $db = new Mypdo();
+    $manager = new PersonneManager($db);
+
+    $personne = new Personne (
+        array(
+            'per_nom' => $_SESSION['per_nom'],
+            'per_prenom' => $_SESSION['per_prenom'],
+            'per_tel' => $_SESSION['per_tel'],
+            'per_mail' => $_SESSION['per_mail'],
+            'per_login' => $_SESSION['per_login'],
+            'per_pwd' => $_SESSION['per_pwd'],
+            )
+        );
+    $manager->add($personne);
+
     /*
         1) Insérer Personne
         2) lastInsertId
         3) Insérer Etudiant
      */
     if ($_POST['per_cat'] == "1") {
-    ?>
+        ?>
         <h1>Ajouter un étudiant</h1>
         <form action="#" method="post">
             <label for="per_div">Année :</label>
@@ -94,7 +119,7 @@ if (empty($_POST['per_nom'])) {
 
             <button type="submit" class="btn btn-primary">Valider</button>
         </form>
-    <?php
+        <?php
     }  else if ($_POST['per_cat'] == "2") {
         ?>
             <h1>Ajouter un salarié</h1>
@@ -124,18 +149,49 @@ if (empty($_POST['per_nom'])) {
             <button type="submit" class="btn btn-primary">Valider</button>
         </form>
         <?php
-    } else {
-        $db = new Mypdo();
-        $manager = new PersonneManager($db);
+    }
 
-        $personne = new Personne (
-            array(
-                'per_nom' => $_POST['per_nom'],
-                )
-            );
-        $manager->add($personne);
+    // Pas au bon endroit
+
+    if(isset($_POST['dep_num']) || isset($_POST['per_telpro'])) {
+        switch ($_SESSION['per_cat']) {
+            case "1":
+                            $_SESSION['dep_num'] = $_POST['dep_num'];
+                            $_SESSION['div_num'] = $_POST['div_num'];
+
+                            $db = new Mypdo();
+                            $manager = new EtudiantManager($db);
+
+                            $etudiant = new Etudiant (
+                                array(
+                                    'per_num' => $db->lastInsertId(),
+                                    'dep_num' => $_SESSION['dep_num'],
+                                    'div_num' => $_SESSION['div_num'],
+                                    )
+                                );
+                            $manager->add($etudiant);
+                                break;
+
+            default:
+                            $_SESSION['sal_telprof'] = $_POST['sal_telprof'];
+                            $_SESSION['fon_num'] = $_POST['fon_num'];
+
+                            $db = new Mypdo();
+                            $manager = new SalarieManager($db);
+
+                            $salarie = new Salarie (
+                                array(
+                                    'per_num' => $db->lastInsertId(),
+                                    'sal_telprof' => $_SESSION['sal_telprof'],
+                                    'fon_num' => $_SESSION['fon_num'],
+                                    )
+                                );
+                            $manager->add($salarie);
+                break;
+        }
         ?>
-        <p>La personne <?php echo $_POST['per_nom'] ?> a bien été ajoutée</p>
+        <p>La personne <?php echo $_SESSION['per_nom'] ?> a bien été ajoutée</p>
         <?php
+        session_destroy();
     }
 }
