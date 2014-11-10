@@ -20,8 +20,8 @@ $parcours = $parcoursManager->getAllParcours();
     ?>
     <tr>
         <td><?php echo $par->getParNum() ?></td>
-        <td><?php echo $par->getVilNum1() ?></td>
-        <td><?php echo $par->getVilNum2() ?></td>
+        <td><?php echo VilleManager::getVilNom($par->getVilNum1()) ?></td>
+        <td><?php echo VilleManager::getVilNom($par->getVilNum2()) ?></td>
         <td><?php echo $par->getParKm() ?></td>
     </tr>
     <?php
