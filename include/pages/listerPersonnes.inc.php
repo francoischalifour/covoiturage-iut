@@ -32,9 +32,10 @@ if (empty($_GET['user'])) {
 <?php
 } else {
     $numero = $_GET['user'];
-    echo $numero;
+    $personne = $personneManager->getPersonne($numero);
+    var_dump($personne);
 ?>
-<h1>Détail sur le salarié</h1>
+<h1>Détail sur le salarié <?php echo $personne->getPerNom() ?></h1>
 <table class="table">
     <tr>
         <th>Prénom</th>
@@ -44,7 +45,11 @@ if (empty($_GET['user'])) {
         <th>Ville</th>
     </tr>
     <tr>
-
+        <td><?php echo $personne->getPerNom() ?></td>
+        <td><?php echo $personne->getPerMail() ?></td>
+        <td><?php echo $personne->getPerTel() ?></td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
 <?php
