@@ -14,7 +14,7 @@ $villes = $villeManager->getAllVille();
         <?php
             foreach ($villes as $ville) {
             ?>
-            <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
+        <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
             <?php
             }
         ?>
