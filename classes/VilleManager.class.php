@@ -30,11 +30,15 @@ class VilleManager {
         return $listeVilles;
     }
 
-    public static function getVilNom($num) {
+    public function getVilNom($num) {
         $sql = "SELECT vil_nom FROM ville WHERE vil_num = :num;";
         $requete = $this->db->prepare($sql);
         $requete->bindValue(':num', $num);
 
-        return $requete->execute();
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_OBJ);
+
+
     }
 }

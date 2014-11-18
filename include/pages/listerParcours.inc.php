@@ -3,6 +3,7 @@ require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
 $parcoursManager = new ParcoursManager($pdo);
+$VilleManager = new VilleManager($pdo);
 $parcours = $parcoursManager->getAllParcours();
 ?>
 
@@ -20,8 +21,8 @@ $parcours = $parcoursManager->getAllParcours();
     ?>
     <tr>
         <td><?php echo $par->getParNum() ?></td>
-        <td><?php echo VilleManager::getVilNom($par->getVilNum1()) ?></td>
-        <td><?php echo VilleManager::getVilNom($par->getVilNum2()) ?></td>
+        <td><?php echo $VilleManager->getVilNom($par->getVilNum1())->vil_nom ?></td>
+        <td><?php echo $VilleManager->getVilNom($par->getVilNum2())->vil_nom ?></td>
         <td><?php echo $par->getParKm() ?></td>
     </tr>
     <?php

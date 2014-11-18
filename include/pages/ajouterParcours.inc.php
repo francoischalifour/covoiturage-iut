@@ -2,9 +2,13 @@
 <?php
 require_once("include/autoload.inc.php");
 
-if (empty($_POST['vil_num1']) && empty($_POST['vil_num2'])) {
-$pdo = new Mypdo();
+$pdo = new MyPdo();
+$parcoursManager = new ParcoursManager($pdo);
 $villeManager = new VilleManager($pdo);
+$parcours = $parcoursManager->getAllParcours();
+
+
+if (empty($_POST['vil_num1']) && empty($_POST['vil_num2'])) {
 $villes = $villeManager->getAllVille();
 ?>
 <form action ="#" method ="post">
@@ -14,7 +18,7 @@ $villes = $villeManager->getAllVille();
         <?php
             foreach ($villes as $ville) {
             ?>
-        <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
+            <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
             <?php
             }
         ?>
@@ -53,6 +57,9 @@ $villes = $villeManager->getAllVille();
         );
     $manager->add($parcours);
     ?>
-    <p>Le parcours entre <?php echo $_POST['vil_num1'] ?> et <?php echo $_POST['vil_num2'] ?> a été ajouté. Il fait <?php echo $_POST['par_km'] ?> km.</p>
+    <p>Le parcours entre 
+    <?php echo $villeManager->getVilNom($parcours->getVilNum1())->vil_nom ?> et 
+    <?php echo $villeManager->getVilNom($parcours->getVilNum2())->vil_nom ?> a été ajouté. Il fait 
+    <?php echo $_POST['par_km'] ?> kms.</p>
     <?php
 }
