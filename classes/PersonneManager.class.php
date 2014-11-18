@@ -50,4 +50,14 @@ class PersonneManager {
 
         return $maPersonne;
     }
+
+    public function isPersonne($numero) {
+        $requete = $this->db->prepare("SELECT COUNT(*) per_num FROM personne WHERE per_num = :numero");
+        $requete->bindValue(":numero", $numero, PDO::PARAM_INT);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_NUM)[0];
+
+        // Retourne 0 si pas personne
+        return $resultat;
+    }
 }
