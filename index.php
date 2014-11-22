@@ -2,10 +2,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="container">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <?php require_once("include/menu.inc.php"); ?>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <?php require_once("include/texte.inc.php");  ?>
             </div>
         </div>

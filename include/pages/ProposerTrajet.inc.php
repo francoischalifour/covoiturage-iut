@@ -12,10 +12,10 @@ if (empty($_POST['vil_num'])) {
     ?>
     <form action="#" method ="post">
         <div class="row form-group">
-            <div class="col-lg-4">
-                <label for="vil_num">Ville de départ :</label>
+            <div class="col-lg-2">
+                <label for="vil_num">Ville de départ</label>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-10">
                 <select class="form-control" name="vil_num" id="vil_num">
                     <option value="0">Sélectionnez la ville</option>
                     <?php
@@ -41,7 +41,7 @@ if (empty($_POST['vil_num'])) {
             <div class="col-md-6">
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label for="vil_num">Ville de départ :</label>
+                        <label for="vil_num">Ville de départ</label>
                     </div>
                     <div class="col-lg-6">
                         <?php echo $villeManager->getVilNom($_POST['vil_num'])->vil_nom ?>
