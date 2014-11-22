@@ -9,7 +9,7 @@ class Salarie {
     }
 
     public function affecte($donnees) {
-        foreach ($donnees as $valeur) {
+        foreach ($donnees as $attribut => $valeur) {
             switch ($attribut) {
                 case 'per_num':
                     $this->setPerNum($valeur);

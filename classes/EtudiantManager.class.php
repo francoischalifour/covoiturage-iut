@@ -6,6 +6,18 @@ class EtudiantManager{
         $this->db = $db;
     }
 
+    public function getEtudiant($numero) {
+        $sql = "SELECT per_num, dep_num, div_num
+                    FROM etudiant WHERE per_num = $numero";
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        $etudiant = $requete->fetch(PDO::FETCH_ASSOC);
+        $monEtudiant = new Etudiant($etudiant);
+
+        return $monEtudiant;
+    }
+
     public function getAllEtudiant() {
         $listeEtudiants = array();
         $sql = "SELECT per_num, dep_num, div_num FROM etudiant";

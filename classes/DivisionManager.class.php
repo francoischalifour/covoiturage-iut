@@ -18,9 +18,9 @@ class DivisionManager{
 
     public function getAllDivision() {
         $listeDivisions = array();
-        $sql = "SELECT div_num, dep_nom FROM division ORDER BY div_num";
+        $sql = "SELECT div_num, div_nom FROM division ORDER BY div_num";
         $requete = $this->db->prepare($sql);
-        $requete->execute;
+        $requete->execute();
 
         while ($division = $requete->fetch(PDO::FETCH_ASSOC)) {
             $listeDivisions[] = new Division($division);
@@ -31,4 +31,13 @@ class DivisionManager{
         return $listeDivisions;
     }
 
+    public function getDivNom($num) {
+        $sql = "SELECT div_nom FROM division WHERE div_num = :num;";
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':num', $num);
+
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_OBJ);
+    }
 }

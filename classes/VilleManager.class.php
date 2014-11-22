@@ -38,7 +38,5 @@ class VilleManager {
         $requete->execute();
 
         return $requete->fetch(PDO::FETCH_OBJ);
-
-
     }
 }

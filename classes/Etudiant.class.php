@@ -9,7 +9,7 @@ class Etudiant {
     }
 
     public function affecte($donnees) {
-        foreach ($donnees as $valeur) {
+        foreach ($donnees as $attribut => $valeur) {
             switch ($attribut) {
                 case 'per_num':
                     $this->setPerNum($valeur);
@@ -28,12 +28,6 @@ class Etudiant {
 
     public function getPerNum() {
         return $this->per_num;
-    }
-
-    public function setPerNum($per_num) {
-        $this->per_num = $per_num;
-
-        return $this;
     }
 
     public function setPerNum($per_num) {

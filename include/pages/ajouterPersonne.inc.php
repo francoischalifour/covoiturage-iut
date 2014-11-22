@@ -8,53 +8,83 @@ if (empty($_POST['per_nom']) && empty($_POST['per_dep']) && empty($_POST['per_fo
     <h1>Ajouter une personne</h1>
 
     <form action="#" method="post">
-        <div class="container">
+        <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="per_nom">Nom :</label>
-                    <input type="text" placeholder="Nom de la personne" class="form-control" name="per_nom" required="required">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_nom">Nom</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Nom de la personne" class="form-control" name="per_nom" required="required">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="per_prenom">Prénom :</label>
-                    <input type="text" placeholder="Prénom de la personne" class="form-control" name="per_prenom">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_prenom">Prénom</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Prénom de la personne" class="form-control" name="per_prenom" required="required">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="per_tel">Téléphone :</label>
-                    <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_tel">Téléphone</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel" required="required">
+                    </div>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="per_mail">Mail :</label>
-                    <input type="text" placeholder="Mail de la personne" class="form-control" name="per_mail">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_mail">Adresse e-mail</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="email" placeholder="Mail de la personne" class="form-control" name="per_mail" required="required">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="per_login">Login :</label>
-                    <input type="text" placeholder="Login de la personne" class="form-control" name="per_login">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_login">Login</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Login de la personne" class="form-control" name="per_login" required="required">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="per_pwd">Mot de passe :</label>
-                    <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_pwd">
+                <div class="row form-group">
+                    <div class="col-lg-2">
+                        <label for="per_pwd">Mot de passe</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_pwd" required="required">
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-1">
+                <label for="per_cat">Catégorie</label>
+            </div>
+            <div class="col-lg-11">
+                <ul class="list-unstyled">
+                    <li>
+                        <label for="1"><input type="radio" name="per_cat" id="1" value="1" checked="checked"> Etudiant</label>
+                    </li>
+                    <li>
+                        <label for="2"><input type="radio" name="per_cat" id="2" value="2"> Personnel</label>
+                    </li>
+                </ul>
             </div>
         </div>
 
         <div class="form-group text-center">
-            <div class="form-group">
-                <label for="per_cat">Catégorie :</label>
-            </div>
-            <label for="1"><input type="radio" name="per_cat" id="1" value="1" checked="checked">Etudiant</label>
-            <label for="2"><input type="radio" name="per_cat" id="2" value="2">Personnel</label>
-        </div>
-
-        <br>
-
-        <div class="form-group">
             <button type="submit" class="btn btn-primary">Valider</button>
         </div>
     </form>
@@ -96,34 +126,38 @@ if (empty($_POST['per_nom']) && empty($_POST['per_dep']) && empty($_POST['per_fo
             echo "AJOUT ETUDIANT";
         ?>
         <h1>Ajouter un étudiant</h1>
-        <form action="#" method="post">
-            <label for="per_div">Année :</label>
-            <select name="per_div" id="per_div">
-                <option value="1">Année 1</option>
-                <option value="2">Année 2</option>
-            </select>
+        <div class="row col-md-8 col-md-offset-2">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="per_div">Année :</label>
+                    <select name="per_div" id="per_div" class="form-control">
+                        <option value="1">Année 1</option>
+                        <option value="2">Année 2</option>
+                    </select>
+                </div>
 
-            <br>
-
-            <label for="per_dep">Département :</label>
-            <select name="per_dep" id="per_dep">
-                <?php
-                    $pdo = new Mypdo();
-                    $departementManager = new DepartementManager($pdo);
-                    $departements = $departementManager->getAllDepartement();
-
-                    foreach ($departements as $departement) {
-                        ?>
-                        <option value="<?php echo $departement->getDepNum() ?>"><?php echo $departement->getDepNom() ?></option>
+                <div class="form-group">
+                    <label for="per_dep">Département :</label>
+                    <select name="per_dep" id="per_dep" class="form-control">
                         <?php
-                    }
-                 ?>
-            </select>
+                            $pdo = new Mypdo();
+                            $departementManager = new DepartementManager($pdo);
+                            $departements = $departementManager->getAllDepartement();
 
-            <br>
+                            foreach ($departements as $departement) {
+                                ?>
+                                <option value="<?php echo $departement->getDepNum() ?>"><?php echo $departement->getDepNom() ?></option>
+                                <?php
+                            }
+                         ?>
+                    </select>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </form>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
         <?php
         } else {
             echo "AJOUT ETUDIANT FAIT OK";
@@ -146,32 +180,36 @@ if (empty($_POST['per_nom']) && empty($_POST['per_dep']) && empty($_POST['per_fo
     }  else if ($_SESSION['per_cat'] == "2") {
             if (empty($_POST['per_telpro'])) {
         ?>
-            <h1>Ajouter un salarié</h1>
+        <h1>Ajouter un salarié</h1>
+        <div class="row col-md-8 col-md-offset-2">
             <form action="#" method="post">
-            <label for="per_telpro">Téléphone professionnel :</label>
-            <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="per_telpro">
+                <div class="form-group">
+                    <label for="per_telpro">Téléphone professionnel :</label>
+                    <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="per_telpro">
+                </div>
 
-            <br>
-
-            <label for="per_fonction">Fonction :</label>
-            <select name="per_fonction" id="per_fonction">
-                <?php
-                    $pdo = new Mypdo();
-                    $fonctionManager = new FonctionManager($pdo);
-                    $fonctions = $fonctionManager->getAllFonction();
-
-                    foreach ($fonctions as $fonction) {
-                        ?>
-                        <option value="<?php echo $fonction->getFonNum() ?>"><?php echo $fonction->getFonLibelle() ?></option>
+                <div class="form-group">
+                    <label for="per_fonction">Fonction :</label>
+                    <select name="per_fonction" id="per_fonction" class="form-control">
                         <?php
-                    }
-                 ?>
-            </select>
+                            $pdo = new Mypdo();
+                            $fonctionManager = new FonctionManager($pdo);
+                            $fonctions = $fonctionManager->getAllFonction();
 
-            <br>
+                            foreach ($fonctions as $fonction) {
+                                ?>
+                                <option value="<?php echo $fonction->getFonNum() ?>"><?php echo $fonction->getFonLibelle() ?></option>
+                                <?php
+                            }
+                         ?>
+                    </select>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </form>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
         <?php
         } else {
             $_SESSION['sal_telprof'] = $_POST['sal_telprof'];
@@ -191,7 +229,9 @@ if (empty($_POST['per_nom']) && empty($_POST['per_dep']) && empty($_POST['per_fo
         }
     }
     ?>
-    <p>La personne <?php echo $_SESSION['per_nom'] ?> a bien été ajoutée</p>
+    <div class="row col-md-8 col-md-offset-2">
+        <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
+    </div>
     <?php
     //session_destroy();
 }

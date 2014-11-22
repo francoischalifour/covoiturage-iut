@@ -46,29 +46,64 @@ if (empty($_GET['user'])) {
         $salarieManager = new SalarieManager($pdo);
 
         if ($etudiantManager->isEtudiant($numero)) {
-            $statut = "étudiant";
+            $etudiant = $etudiantManager->getEtudiant($numero);
+
+            $departementManager = new DepartementManager($pdo);
+            $departement = $departementManager->getAllDepartement();
+
+            //$villeManager = new VilleManager($pdo);
+            //$ville = $villeManager->getAllVille();
+
+            $divisionManager = new DivisionManager($pdo);
+            $division = $divisionManager->getAllDivision();
+        ?>
+        <h1>Détail sur l'étudiant <?php echo $personne->getPerPrenom() ?> <?php echo $personne->getPerNom() ?></h1>
+        <table class="table">
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Adresse e-mail</th>
+                <th>Téléphone</th>
+                <th>Département</th>
+                <th>Ville</th>
+            </tr>
+            <tr>
+                <td><?php echo $personne->getPerPrenom() ?></td>
+                <td><?php echo $personne->getPerNom() ?></td>
+                <td><?php echo $personne->getPerMail() ?></td>
+                <td><?php echo $personne->getPerTel() ?></td>
+                <td><?php echo $departementManager->getDepNom($etudiant->getDepNum())->dep_nom ?></td>
+                <td><?php echo $divisionManager->getDivNom($etudiant->getDivNum())->div_nom ?></td>
+            </tr>
+        </table>
+        <?php
         } else {
-            $statut = "salarié";
+            $salarie = $salarieManager->getSalarie($numero);
+
+            $fonctionManager = new FonctionManager($pdo);
+            $fonction = $fonctionManager->getAllFonction();
+        ?>
+        <h1>Détail sur le salarié <?php echo $personne->getPerPrenom() ?> <?php echo $personne->getPerNom() ?></h1>
+            <table class="table">
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Adresse e-mail</th>
+                    <th>Téléphone</th>
+                    <th>Téléphone Pro</th>
+                    <th>Fonction</th>
+                </tr>
+                <tr>
+                    <td><?php echo $personne->getPerPrenom() ?></td>
+                    <td><?php echo $personne->getPerNom() ?></td>
+                    <td><?php echo $personne->getPerMail() ?></td>
+                    <td><?php echo $personne->getPerTel() ?></td>
+                    <td><?php echo $salarie->getSalTelProf() ?></td>
+                    <td><?php echo $fonctionManager->getFonNom($salarie->getFonNum())->fon_libelle ?></td>
+                </tr>
+            </table>
+        <?php
         }
-    ?>
-    <h1>Détail sur le <?php echo $statut ?> <?php echo $personne->getPerNom() ?></h1>
-    <table class="table">
-        <tr>
-            <th>Prénom</th>
-            <th>Mail</th>
-            <th>Tel</th>
-            <th>Département</th>
-            <th>Ville</th>
-        </tr>
-        <tr>
-            <td><?php echo $personne->getPerNom() ?></td>
-            <td><?php echo $personne->getPerMail() ?></td>
-            <td><?php echo $personne->getPerTel() ?></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-    <?php
     }
 }
 ?>

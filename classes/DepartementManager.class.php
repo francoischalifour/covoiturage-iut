@@ -31,4 +31,13 @@ class DepartementManager {
         return $listeDepartements;
     }
 
+    public function getDepNom($num) {
+        $sql = "SELECT dep_nom FROM departement WHERE dep_num = :num;";
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':num', $num);
+
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_OBJ);
+    }
 }

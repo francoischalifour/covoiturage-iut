@@ -7,7 +7,7 @@ class Division {
         $this->affecte($valeurs);
     }
 
-    public function affecte (donnees) {
+    public function affecte ($donnees) {
         foreach ($donnees as $attribut => $valeur) {
             switch ($attribut) {
                 case 'div_num':

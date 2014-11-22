@@ -1,29 +1,30 @@
-<div id="menu">
-    <div id="menuInt">
-        <p><a href="index.php?page=0"><img src="image/accueil.gif" class="imagMenu" alt="Accueil"/>Accueil</a></p>
-        <p><img src="image/personne.png" class="imagMenu" alt="Personne"/>Personne</p>
-        <ul>
-            <li><a href="index.php?page=1">Ajouter</a></li>
-            <li><a href="index.php?page=2">Lister</a></li>
-            <li><a href="index.php?page=3">Modifier</a></li>
-            <li><a href="index.php?page=4">Supprimer</a></li>
-        </ul>
-        <p><img src="image/parcours.gif" class="imagMenu" alt="Parcours"/>Parcours</p>
-        <ul>
-            <li><a href="index.php?page=5">Ajouter</a></li>
-            <li><a href="index.php?page=6">Lister</a></li>
-        </ul>
-        <p><img src="image/ville.png" class="imagMenu" alt="Ville"/>Ville</p>
-        <ul>
-            <li><a href="index.php?page=7">Ajouter</a></li>
-            <li><a href="index.php?page=8">Lister</a></li>
-        </ul>
+<div class="panel">
+   <div class="panel-body panel-menu">
+        <h4><a href="index.php?page=0">Accueil</a></h4>
+       <h4>Personne</h4>
+       <ul>
+           <li><a href="index.php?page=1">Ajouter</a></li>
+           <li><a href="index.php?page=2">Lister</a></li>
+           <li><a href="index.php?page=3">Modifier</a></li>
+           <li><a href="index.php?page=4">Supprimer</a></li>
+       </ul>
 
-        <p><img src="image/trajet.png" class="imagMenu" alt="Trajet"/>Trajet</p>
-        <ul>
-            <li><a href="index.php?page=9">Proposer</a></li>
-            <li><a href="index.php?page=10">Rechercher</a></li>
-        </ul>
+       <h4>Parcours</h4>
+       <ul>
+           <li><a href="index.php?page=5">Ajouter</a></li>
+           <li><a href="index.php?page=6">Lister</a></li>
+       </ul>
 
-    </div>
+       <h4>Ville</h4>
+       <ul>
+           <li><a href="index.php?page=7">Ajouter</a></li>
+           <li><a href="index.php?page=8">Lister</a></li>
+       </ul>
+
+       <h4>Trajet</h4>
+       <ul>
+           <li><a href="index.php?page=9">Proposer</a></li>
+           <li><a href="index.php?page=10">Rechercher</a></li>
+       </ul>
+   </div>
 </div>

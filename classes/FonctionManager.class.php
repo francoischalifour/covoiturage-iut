@@ -30,4 +30,13 @@ class FonctionManager{
         return $listefonctions;
     }
 
+    public function getFonNom($num) {
+        $sql = "SELECT fon_libelle FROM fonction WHERE fon_num = :num;";
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':num', $num);
+
+        $requete->execute();
+
+        return $requete->fetch(PDO::FETCH_OBJ);
+    }
 }

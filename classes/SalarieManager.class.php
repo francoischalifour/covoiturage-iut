@@ -6,7 +6,17 @@ class SalarieManager {
         $this->db = $db;
     }
 
-    // Ajout
+    public function getSalarie($numero) {
+        $sql = "SELECT per_num, sal_telprof, fon_num
+                    FROM salarie WHERE per_num = $numero";
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        $salarie = $requete->fetch(PDO::FETCH_ASSOC);
+        $monSalarie = new Salarie($salarie);
+
+        return $monSalarie;
+    }
 
     public function getAllSalarie() {
         $listeSalaries = array();
@@ -23,6 +33,7 @@ class SalarieManager {
         return $listeSalaries;
     }
 
+    // Fonction utile seulement si on ajoute un nouveau type de personne
     public function isSalarie($numero) {
         $requete = $this->db->prepare("SELECT COUNT(*) per_num FROM salarie WHERE per_num = :numero");
         $requete->bindValue(":numero", $numero, PDO::PARAM_INT);

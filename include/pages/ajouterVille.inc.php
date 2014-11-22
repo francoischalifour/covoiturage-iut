@@ -6,9 +6,18 @@ require_once("include/autoload.inc.php");
 if (empty($_POST['vil_nom'])) {
     ?>
     <form action="#" method="post">
-        <label for="vil_nom">Nom :</label>
-        <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom">
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <div class="row form-group">
+            <div class="col-lg-2">
+                <label for="vil_nom">Nom de la ville</label>
+            </div>
+            <div class="col-lg-10">
+                <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom">
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
     </form>
     <?php
 } else {
@@ -22,6 +31,6 @@ if (empty($_POST['vil_nom'])) {
         );
     $manager->add($ville);
     ?>
-    <p>La ville <?php echo $_POST['vil_nom'] ?> a bien été ajoutée</p>
+    <p class="alert alert-success">La ville <strong><?php echo $_POST['vil_nom'] ?></strong> a bien été ajoutée.</p>
     <?php
 }
