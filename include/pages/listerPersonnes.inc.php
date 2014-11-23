@@ -65,7 +65,7 @@ if (empty($_GET['user'])) {
                 <th>Adresse e-mail</th>
                 <th>Téléphone</th>
                 <th>Département</th>
-                <th>Ville</th>
+                <th>Division</th>
             </tr>
             <tr>
                 <td><?php echo $personne->getPerPrenom() ?></td>

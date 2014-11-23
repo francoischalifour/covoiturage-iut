@@ -6,6 +6,20 @@ class SalarieManager {
         $this->db = $db;
     }
 
+    public function add($salarie) {
+        $requete = $this->db->prepare("INSERT INTO salarie
+            (per_num, sal_telprof, fon_num)
+            VALUES (:per_num, :sal_telprof, :fon_num);");
+
+        $requete->bindValue(':per_num', $salarie->getPerNum());
+        $requete->bindValue(':sal_telprof', $salarie->getSalTelProf());
+        $requete->bindValue(':fon_num', $salarie->getFonNum());
+
+        $requete->execute();
+
+        return $this->db->lastInsertId();
+    }
+
     public function getSalarie($numero) {
         $sql = "SELECT per_num, sal_telprof, fon_num
                     FROM salarie WHERE per_num = $numero";
