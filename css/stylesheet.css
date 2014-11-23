@@ -29,6 +29,12 @@ body {
     border-radius: 3px;
 }
 
+@media(max-width: 990px) {
+    .panel-menu li {
+        display: inline-block;
+    }
+}
+
 .panel-menu li a:hover {
     background-color: #f7f7f7;
 }

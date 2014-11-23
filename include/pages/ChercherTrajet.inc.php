@@ -53,7 +53,10 @@ if (empty($_POST['vil_num'])) {
                         <label for="pro_date">Date de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="pro_date" id="pro_date" class="form-control" placeholder="JJ/MM/AAAA">
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" name="pro_date" id="pro_date" class="form-control" placeholder="JJ/MM/AAAA">
+                            <span class="input-group-addon"><i class="mdi-action-event"></i></span>
+                        </div>
                     </div>
                 </div>
 

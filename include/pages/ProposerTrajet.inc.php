@@ -53,8 +53,12 @@ if (empty($_POST['vil_num'])) {
                         <label for="pro_date">Date de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="pro_date" id="pro_date" class="form-control" placeholder="JJ/MM/AAAA">
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" name="pro_date" id="pro_date" class="form-control" placeholder="JJ/MM/AAAA">
+                            <span class="input-group-addon"><i class="mdi-action-event"></i></span>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="row form-group">
@@ -91,7 +95,10 @@ if (empty($_POST['vil_num'])) {
                         <label for="pro_time">Heure de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="pro_time" id="pro_time" class="form-control" placeholder="HH:MM:SS">
+                        <div class="input-group date" id="timepicker">
+                            <input type="text" name="pro_time" id="pro_time" class="form-control" placeholder="HH:MM">
+                            <span class="input-group-addon"><i class="mdi-action-schedule"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>

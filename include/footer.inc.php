@@ -8,5 +8,23 @@
     <script src="js/jquery.js"></script>
     <script src="js/material.js"></script>
     <script src="js/ripples.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/datetimepicker.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datepicker').datetimepicker({
+                pickTime: false,
+                language: 'fr',
+                showToday: true
+            });
+        });
+
+        $(function () {
+            $('#timepicker').datetimepicker({
+                pickDate: false,
+                language: 'fr'
+            });
+        });
+    </script>
 </body>
 </html>
