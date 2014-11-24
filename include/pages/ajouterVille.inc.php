@@ -11,7 +11,7 @@ if (empty($_POST['vil_nom'])) {
                 <label for="vil_nom">Nom de la ville</label>
             </div>
             <div class="col-lg-10">
-                <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom">
+                <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom" required="required">
             </div>
         </div>
 

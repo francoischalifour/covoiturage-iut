@@ -10,7 +10,13 @@ $personnes = $personneManager->getAllPersonne();
 if (empty($_GET['user'])) {
 ?>
 <h1>Liste des personnes enregistrées</h1>
-
+<?php
+if ($personneManager->isEmpty()) {
+    ?>
+    <p>Aucune personne n'est actuellement enregistrée.</p>
+    <?php
+} else {
+?>
 <table class="table">
     <tr>
         <th>Numéro</th>
@@ -27,6 +33,7 @@ if (empty($_GET['user'])) {
     </tr>
     <?php
     }
+}
     ?>
 </table>
 <?php

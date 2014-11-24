@@ -16,7 +16,7 @@ $villes = $villeManager->getAllVille();
             <label for="vil_num1">Ville de départ</label>
         </div>
         <div class="col-lg-10">
-            <select class="form-control" name="vil_num1" id="vil_num1">
+            <select class="form-control" name="vil_num1" id="vil_num1" required="required">
                 <option value="">Sélectionnez la ville</option>
                 <?php
                     foreach ($villes as $ville) {
@@ -34,7 +34,7 @@ $villes = $villeManager->getAllVille();
             <label for="nom">Ville d'arrivée</label>
         </div>
         <div class="col-lg-10">
-            <select class="form-control" name="vil_num2" id="vil_num2">
+            <select class="form-control" name="vil_num2" id="vil_num2" required="required">
                 <option value="">Sélectionnez la ville</option>
                 <?php
                     foreach ($villes as $ville) {
@@ -52,7 +52,7 @@ $villes = $villeManager->getAllVille();
             <label for="par_km">Nombre de kilomètres</label>
         </div>
         <div class="col-lg-10">
-            <input type="text" placeholder="Nombre de kilomètres" class="form-control" name="par_km">
+            <input type="text" placeholder="Nombre de kilomètres" class="form-control" name="par_km" pattern="[0-9]{1,4}$" title="La distance doit être un entier positif." required="required">
         </div>
     </div>
 

@@ -8,6 +8,12 @@ body {
     line-height: 2.2;
 }
 
+@media (min-width: 1400px) {
+    .container {
+        width: 1370px;
+    }
+}
+
 .panel {
     border-radius: 0;
 }

@@ -26,5 +26,10 @@
             });
         });
     </script>
+    <script>
+      $(document).ready(function() {
+          $.material.init();
+      });
+    </script>
 </body>
 </html>

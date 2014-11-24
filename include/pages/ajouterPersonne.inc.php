@@ -10,15 +10,6 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
             <div class="col-md-6">
                 <div class="row form-group">
                     <div class="col-lg-2">
-                        <label for="per_nom">Nom</label>
-                    </div>
-                    <div class="col-lg-10">
-                        <input type="text" placeholder="Nom de la personne" class="form-control" name="per_nom" required="required">
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-lg-2">
                         <label for="per_prenom">Prénom</label>
                     </div>
                     <div class="col-lg-10">
@@ -28,38 +19,47 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
 
                 <div class="row form-group">
                     <div class="col-lg-2">
+                        <label for="per_nom">Nom</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Nom de la personne" class="form-control" name="per_nom" required="required">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-lg-2">
                         <label for="per_tel">Téléphone</label>
                     </div>
                     <div class="col-lg-10">
-                        <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel" required="required">
+                        <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel" pattern="^(\+[0-9]{1,3})?[0-9]{4,15}$" title="Le numéro doit être de la forme +330123456789 ou 0123456789" required="required">
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="row form-group">
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <label for="per_mail">Adresse e-mail</label>
                     </div>
-                    <div class="col-lg-10">
-                        <input type="email" placeholder="Mail de la personne" class="form-control" name="per_mail" required="required">
+                    <div class="col-lg-8">
+                        <input type="email" placeholder="Mail de la personne" class="form-control" name="per_mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required="required">
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <label for="per_login">Login</label>
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <input type="text" placeholder="Login de la personne" class="form-control" name="per_login" required="required">
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <label for="per_pwd">Mot de passe</label>
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <input type="password" placeholder="Mot de passe de la personne" class="form-control" name="per_pwd" required="required">
                     </div>
                 </div>
@@ -103,7 +103,7 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="div_num">Année :</label>
-                    <select name="div_num" id="div_num" class="form-control">
+                    <select name="div_num" id="div_num" class="form-control" required="required">
                         <option value="1">Année 1</option>
                         <option value="2">Année 2</option>
                     </select>
@@ -111,7 +111,7 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
 
                 <div class="form-group">
                     <label for="dep_num">Département :</label>
-                    <select name="dep_num" id="dep_num" class="form-control">
+                    <select name="dep_num" id="dep_num" class="form-control" required="required">
                         <?php
                             $pdo = new Mypdo();
                             $departementManager = new DepartementManager($pdo);
@@ -139,12 +139,12 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
         <form action="#" method="post">
             <div class="form-group">
                 <label for="sal_telprof">Téléphone professionnel :</label>
-                <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="sal_telprof" required="required">
+                <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="sal_telprof" pattern="^(\+[0-9]{1,3})?[0-9]{4,15}$" title="Le numéro doit être de la forme +330123456789 ou 0123456789" required="required">
             </div>
 
             <div class="form-group">
                 <label for="fon_num">Fonction :</label>
-                <select name="fon_num" id="fon_num" class="form-control">
+                <select name="fon_num" id="fon_num" class="form-control" required="required">
                     <?php
                         $pdo = new Mypdo();
                         $fonctionManager = new FonctionManager($pdo);
@@ -210,7 +210,7 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
     }
     ?>
     <div class="row col-md-8 col-md-offset-2">
-        <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
+        <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
         <p class="text-center">
             <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
             <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir le profil de la nouvelle personne</a>
