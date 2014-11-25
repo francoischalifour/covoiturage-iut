@@ -4,9 +4,7 @@ require_once("include/autoload.inc.php");
 $pdo = new MyPdo();
 $personneManager = new PersonneManager($pdo);
 $personnes = $personneManager->getAllPersonne();
-?>
 
-<?php
 if (empty($_GET['user'])) {
 ?>
 <h1>Liste des personnes enregistrées</h1>
@@ -58,9 +56,6 @@ if ($personneManager->isEmpty()) {
             $departementManager = new DepartementManager($pdo);
             $departement = $departementManager->getAllDepartement();
 
-            //$villeManager = new VilleManager($pdo);
-            //$ville = $villeManager->getAllVille();
-
             $divisionManager = new DivisionManager($pdo);
             $division = $divisionManager->getAllDivision();
         ?>
@@ -111,6 +106,12 @@ if ($personneManager->isEmpty()) {
             </table>
         <?php
         }
+        ?>
+        <p class="text-center">
+            <a href="index.php?page=3&user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Modifier</a>
+            <a href="index.php?page=4&user=<?php echo $personne->getPerNum() ?>" class="btn btn-warning">Supprimer</a>
+        </p>
+        <?php
     }
 }
 ?>
