@@ -24,14 +24,8 @@ class ProposeManager {
     }
 
     public function searchTrajet($parcours){
-        $requete = $this->db->prepare("SELECT COUNT(*) per_num FROM personne");
+        $requete = $this->db->prepare("SELECT * FROM propose WHERE ");
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_NUM)[0];
-
-        if ($resultat == 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

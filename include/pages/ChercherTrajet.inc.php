@@ -118,6 +118,6 @@ if (empty($_POST['vil_num'])) {
         </div>
     </form>
     <?php
-
+    
     $parcoursManager->searchTrajet($trajetManager);
 }
