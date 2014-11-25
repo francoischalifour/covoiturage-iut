@@ -1,7 +1,7 @@
 <?php
 require_once("include/autoload.inc.php");
 
-if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_num'])) {
+if ((empty($_POST['per_nom']) || empty($_POST['per_prenom']) || empty($_POST['per_tel']) || empty($_POST['per_mail']) || empty($_POST['per_login']) || empty($_POST['per_pwd'])) && empty($_POST['dep_num']) && empty($_POST['fon_num'])) {
 ?>
     <h1>Ajouter une personne</h1>
 
@@ -87,7 +87,7 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
         </div>
     </form>
     <?php
-} else if(!empty($_POST["per_nom"])) {
+} else if (!empty($_POST["per_nom"])) {
     $_SESSION['per_nom'] = $_POST['per_nom'];
     $_SESSION['per_prenom'] = $_POST['per_prenom'];
     $_SESSION['per_tel'] = $_POST['per_tel'];
@@ -95,6 +95,8 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
     $_SESSION['per_login'] = $_POST['per_login'];
     $_SESSION['per_pwd'] = $_POST['per_pwd'];
     $_SESSION['per_cat'] = $_POST['per_cat'];
+
+    $pdo = new MyPdo();
 
     if ($_SESSION['per_cat'] == "1") {
     ?>

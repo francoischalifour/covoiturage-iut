@@ -1,10 +1,11 @@
 <?php
-class Salarie {
+class Salarie extends Personne {
     private $per_num;
     private $sal_telprof;
     private $fon_num;
 
     public function __construct($valeurs = array()) {
+        parent::affecte($valeurs);
         $this->affecte($valeurs);
     }
 

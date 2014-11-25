@@ -1,12 +1,10 @@
-<h1>Supprimer des personnes enregistrées</h1>
-
 <?php
 require_once("include/autoload.inc.php");
 
 if (empty($_GET['user'])) {
     ?>
     <h1>Une erreur est survenue</h1>
-    <p>Vous n'avez sélectionné aucun utilisateur à modifier.</p>
+    <p>Vous n'avez sélectionné aucun utilisateur à supprimer.</p>
     <?php
 } else {
     $pdo = new MyPdo();
@@ -21,14 +19,16 @@ if (empty($_GET['user'])) {
         <p>L'utilisateur que vous recherchez n'existe pas.</p>
     <?php
     } else {
-    	$personne = $personneManager->getPersonne($numero);
-    	$etudiantManager = new EtudiantManager($pdo);
-		$salarieManager = new SalarieManager($pdo);
-
-    	if ($etudiantManager->isEtudiant($numero)) {
-    		$personneManager->deletePers($numero, 1);
-    	} else {
-    		$personneManager->deletePers($numero, 2);
-    	}
+        $personne = $personneManager->getPersonne($numero);
+        $etudiantManager = new EtudiantManager($pdo);
+        ?>
+        <h1>Suppression d'une personne</h1>
+        <p class="alert alert-success">La personne <strong><?php echo $personne->getPerPrenom() . ' ' . $personne->getPerNom() ?></strong> a bien été supprimée.</p>
+        <?php
+        if ($etudiantManager->isEtudiant($numero)) {
+        	$personneManager->deletePers($numero, 1);
+        } else {
+        	$personneManager->deletePers($numero, 2);
+        }
     }
 }

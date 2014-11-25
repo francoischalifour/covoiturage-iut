@@ -1,10 +1,11 @@
 <?php
-class Etudiant {
+class Etudiant extends Personne {
     private $per_num;
     private $dep_num;
     private $div_num;
 
     public function __construct($valeurs = array()) {
+        parent::affecte($valeurs);
         $this->affecte($valeurs);
     }
 

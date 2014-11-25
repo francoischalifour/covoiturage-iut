@@ -15,7 +15,8 @@
             $('#datepicker').datetimepicker({
                 pickTime: false,
                 language: 'fr',
-                showToday: true
+                showToday: true,
+                minDate: new Date()
             });
         });
 
@@ -27,9 +28,12 @@
         });
     </script>
     <script>
-      $(document).ready(function() {
-          $.material.init();
-      });
+        $(function() {
+            // Régler le conflit entre les deux scripts
+            if (!$('#datepicker').length) {
+                $.material.init();
+            }
+          });
     </script>
 </body>
 </html>
