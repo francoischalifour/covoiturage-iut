@@ -107,10 +107,10 @@ if ($personneManager->isEmpty()) {
         <?php
         }
         ?>
-        <p class="text-center">
+        <div class="text-center">
             <a href="index.php?page=3&user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Modifier</a>
             <a href="index.php?page=4&user=<?php echo $personne->getPerNum() ?>" class="btn btn-warning">Supprimer</a>
-        </p>
+        </div>
         <?php
     }
 }

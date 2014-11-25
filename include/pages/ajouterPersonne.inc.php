@@ -31,7 +31,7 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
                         <label for="per_tel">Téléphone</label>
                     </div>
                     <div class="col-lg-10">
-                        <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel" pattern="^(\+[0-9]{1,3})?[0-9]{4,15}$" title="Le numéro doit être de la forme +330123456789 ou 0123456789" required="required">
+                        <input type="text" placeholder="Téléphone de la personne" class="form-control" name="per_tel" pattern="[0-9]{10}" title="Le numéro doit être de la forme 0123456789" required="required">
                     </div>
                 </div>
             </div>
@@ -113,7 +113,6 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
                     <label for="dep_num">Département :</label>
                     <select name="dep_num" id="dep_num" class="form-control" required="required">
                         <?php
-                            $pdo = new Mypdo();
                             $departementManager = new DepartementManager($pdo);
                             $departements = $departementManager->getAllDepartement();
 
@@ -139,14 +138,13 @@ if (empty($_POST['per_nom']) && empty($_POST['dep_num']) && empty($_POST['fon_nu
         <form action="#" method="post">
             <div class="form-group">
                 <label for="sal_telprof">Téléphone professionnel :</label>
-                <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="sal_telprof" pattern="^(\+[0-9]{1,3})?[0-9]{4,15}$" title="Le numéro doit être de la forme +330123456789 ou 0123456789" required="required">
+                <input type="text" placeholder="Téléphone professionnel de la personne" class="form-control" name="sal_telprof" pattern="[0-9]{10}" title="Le numéro doit être de la forme 0123456789" required="required">
             </div>
 
             <div class="form-group">
                 <label for="fon_num">Fonction :</label>
                 <select name="fon_num" id="fon_num" class="form-control" required="required">
                     <?php
-                        $pdo = new Mypdo();
                         $fonctionManager = new FonctionManager($pdo);
                         $fonctions = $fonctionManager->getAllFonction();
 
