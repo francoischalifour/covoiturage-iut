@@ -5,6 +5,7 @@ require_once("include/autoload.inc.php");
 $pdo = new MyPdo();
 $parcoursManager = new ParcoursManager($pdo);
 $villeManager = new VilleManager($pdo);
+$trajetManager = new TrajetManager($pdo);
 
 $villes = $villeManager->getAllVille();
 
@@ -113,8 +114,10 @@ if (empty($_POST['vil_num'])) {
         </div>
 
         <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary">Proposer</button>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
         </div>
     </form>
     <?php
+
+    $parcoursManager->searchTrajet($trajetManager);
 }
