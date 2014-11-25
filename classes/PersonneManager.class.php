@@ -72,4 +72,30 @@ class PersonneManager {
             return false;
         }
     }
+
+    public function deletePers($numero, $type) {
+        if ($type == 1) {
+            $table = 'etudiant';
+        } else {
+            $table = 'salarie';
+        }
+
+        $requete = $this->db->prepare("DELETE FROM propose WHERE per_num = :numero");
+        $requete->bindValue(":numero", $numero, PDO::PARAM_INT);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+
+        $requete = $this->db->prepare("DELETE FROM $table WHERE per_num = :numero");
+        $requete->bindValue(":numero", $numero, PDO::PARAM_INT);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+        $requete = $this->db->prepare("DELETE FROM $personne WHERE per_num = :numero");
+        $requete->bindValue(":numero", $numero, PDO::PARAM_INT);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+        return $resultat; 
+    }
 }
