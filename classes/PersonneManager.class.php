@@ -16,7 +16,7 @@ class PersonneManager {
         $requete->bindValue(':tel', $personne->getPerTel());
         $requete->bindValue(':mail', $personne->getPerMail());
         $requete->bindValue(':login', $personne->getPerLogin());
-        $requete->bindValue(':pwd', $personne->getPerPwd());
+        $requete->bindValue(':pwd', sha1(sha1($personne->getPerPwd()) . "48@!alsd"));
 
         $requete->execute();
 
@@ -74,7 +74,17 @@ class PersonneManager {
     }
 
     public function updatePers($personne) {
+        $requete = $this->db->prepare("UPDATE  personne SET per_nom = :per_nom, per_prenom = :per_prenom, per_tel = :per_tel, per_mail = :per_mail WHERE per_num = :numero;");
 
+        $requete->bindValue(':numero', $personne->getPerNum());
+        $requete->bindValue(':per_nom', $personne->getPerNom());
+        $requete->bindValue(':per_prenom', $personne->getPerPrenom());
+        $requete->bindValue(':per_tel', $personne->getPerTel());
+        $requete->bindValue(':per_mail', $personne->getPerMail());
+
+        $requete->execute();
+
+        return $personne->getPerNum();
     }
 
     public function deletePers($numero, $type) {

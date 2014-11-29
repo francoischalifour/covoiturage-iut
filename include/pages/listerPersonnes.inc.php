@@ -7,7 +7,7 @@ $personnes = $personneManager->getAllPersonne();
 
 if (empty($_GET['user'])) {
 ?>
-<h1>Liste des personnes enregistrées</h1>
+<h1>Liste des personnes</h1>
 <?php
 if ($personneManager->isEmpty()) {
     ?>
@@ -18,16 +18,16 @@ if ($personneManager->isEmpty()) {
 <table class="table">
     <tr>
         <th>Numéro</th>
-        <th>Nom</th>
         <th>Prénom</th>
+        <th>Nom</th>
     </tr>
     <?php
     foreach ($personnes as $personne) {
     ?>
     <tr>
         <td><a href="<?php echo $_SERVER['REQUEST_URI'] ?>&user=<?php echo $personne->getPerNum() ?>"><?php echo $personne->getPerNum() ?></a></td>
-        <td><?php echo $personne->getPerNom() ?></td>
         <td><?php echo $personne->getPerPrenom() ?></td>
+        <td><?php echo $personne->getPerNom() ?></td>
     </tr>
     <?php
     }

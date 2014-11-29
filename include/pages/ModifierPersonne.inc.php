@@ -63,7 +63,7 @@ if (empty($_GET['user'])) {
 
                                 foreach ($departements as $departement) {
                                     ?>
-                                    <option value="<?php echo $departement->getDepNum() ?>" <?php if ($departement->getDepNum() == $etudiant->getDivNum()) echo 'required="required"' ?>><?php echo $departement->getDepNom() ?></option>
+                                    <option value="<?php echo $departement->getDepNum() ?>" <?php if ($departement->getDepNum() == $etudiant->getDepNum()) echo 'selected="selected"' ?>><?php echo $departement->getDepNom() ?></option>
                                     <?php
                                 }
                              ?>
@@ -128,10 +128,35 @@ if (empty($_GET['user'])) {
             ?>
             <h1>Modification d'une personne</h1>
             <?php
+            $personneNouv = new Personne (
+                array(
+                    'per_num' => $personne->getPerNum(),
+                    'per_nom' => $_POST['per_nom'],
+                    'per_prenom' => $_POST['per_prenom'],
+                    'per_tel' => $_POST['per_tel'],
+                    'per_mail' => $_POST['per_mail'],
+                    )
+                );
+            $personneManager->updatePers($personneNouv);
+
             if ($etudiantManager->isEtudiant($numero)) {
-
+                $etudiantNouv = new Etudiant (
+                array(
+                    'per_num' => $personne->getPerNum(),
+                    'dep_num' => $_POST['dep_num'],
+                    'div_num' => $_POST['div_num'],
+                    )
+                );
+            $etudiantManager->updateEtu($etudiantNouv);
             } else {
-
+                $salarieNouv = new Salarie (
+                array(
+                    'per_num' => $personne->getPerNum(),
+                    'sal_telprof' => $_POST['sal_telprof'],
+                    'fon_num' => $_POST['fon_num'],
+                    )
+                );
+                $salarieManager->updateSal($salarieNouv);
             }
             ?>
             <p class="alert alert-success">La personne a bien été modifiée.</p>

@@ -56,4 +56,16 @@ class EtudiantManager {
         // Retourne 0 si pas étudiant
         return $resultat;
     }
+
+    public function updateEtu($etudiant) {
+        $requete = $this->db->prepare("UPDATE  etudiant SET dep_num = :dep_num, div_num = :div_num WHERE per_num = :numero;");
+
+        $requete->bindValue(':numero', $etudiant->getPerNum());
+        $requete->bindValue(':dep_num', $etudiant->getDepNum());
+        $requete->bindValue(':div_num', $etudiant->getDivNum());
+
+        $requete->execute();
+
+        return $etudiant->getPerNum();
+    }
 }

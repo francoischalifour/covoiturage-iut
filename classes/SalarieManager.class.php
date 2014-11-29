@@ -57,4 +57,16 @@ class SalarieManager {
         // Retourne 0 si pas salarié
         return $resultat;
     }
+
+    public function updateSal($salarie) {
+        $requete = $this->db->prepare("UPDATE  salarie SET sal_telprof = :sal_telprof, fon_num = :fon_num WHERE per_num = :numero;");
+
+        $requete->bindValue(':numero', $salarie->getPerNum());
+        $requete->bindValue(':sal_telprof', $salarie->getSalTelProf());
+        $requete->bindValue(':fon_num', $salarie->getFonNum());
+
+        $requete->execute();
+
+        return $salarie->getPerNum();
+    }
 }
