@@ -70,5 +70,4 @@ class Parcours {
 
         return $this;
     }
-
 }

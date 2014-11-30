@@ -3,13 +3,10 @@
 require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
-$parcoursManager = new ParcoursManager($pdo);
-$villeManager = new VilleManager($pdo);
-$trajetManager = new TrajetManager($pdo);
 
-$villes = $villeManager->getAllVille();
-
-if (empty($_POST['vil_num'])) {
+if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
+    $proposeManager = new ProposeManager($pdo);
+    $villes = $proposeManager->getAllVilleDepart();
     ?>
     <form action ="#" method ="post">
         <div class="row form-group">
@@ -35,7 +32,11 @@ if (empty($_POST['vil_num'])) {
         </div>
     </form>
     <?php
-} else {
+} else if (empty($_POST['vil_num2']) && !empty($_POST['vil_num'])) {
+    $villeManager = new VilleManager($pdo);
+    $proposeManager = new ProposeManager($pdo);
+    $ville = $villeManager->getVilNom($_POST['vil_num']);
+    $_SESSION['vil_num'] = $_POST['vil_num'];
     ?>
     <form action ="#" method ="post">
         <div class="row">
@@ -45,7 +46,7 @@ if (empty($_POST['vil_num'])) {
                         <label for="vil_num">Ville de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <?php echo $villeManager->getVilNom($_POST['vil_num'])->vil_nom ?>
+                        <?php echo $ville->getVilNom() ?>
                     </div>
                 </div>
 
@@ -70,7 +71,7 @@ if (empty($_POST['vil_num'])) {
                             <?php
                             for ($i = 0; $i <= 23; $i++) {
                             ?>
-                                <option value="<?php echo $i ?>"><?php echo $i?>h</option>
+                                <option value="<?php echo $i ?>"><?php echo ($i<10) ? "0".$i : $i; ?>h</option>
                             <?php
                             } ?>
                         </select>
@@ -81,12 +82,14 @@ if (empty($_POST['vil_num'])) {
             <div class="col-md-6">
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <label for="vil_num">Ville d'arivée</label>
+                        <label for="vil_num">Ville d'arrivée</label>
                     </div>
                     <div class="col-lg-6">
-                        <select class="form-control" name="vil2_num" id="vil2_num" required="required">
+                        <select class="form-control" name="vil_num2" id="vil_num2" required="required">
                             <option value="">Sélectionnez la ville</option>
                             <?php
+                                $villes = $proposeManager->getAllVilleArrivee($_POST['vil_num']);
+
                                 foreach ($villes as $ville) {
                                 ?>
                                 <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
@@ -118,6 +121,47 @@ if (empty($_POST['vil_num'])) {
         </div>
     </form>
     <?php
-    
-    $parcoursManager->searchTrajet($trajetManager);
+} else {
+    $villeManager = new VilleManager($pdo);
+    $parcoursManager = new ParcoursManager($pdo);
+    $personneManager = new PersonneManager($pdo);
+
+    $resultats = $proposeManager->getResultParcours($_SESSION['vil_num'], $_POST['vil_num2'], $_POST['pro_date'], intval($_POST['pro_date_prec']), $_POST['pro_time']);
+
+    if (COUNT($resultats) == 0) {
+        ?>
+        <p>Aucun trajet ne correspond à votre recherche.</p>
+        <?php
+    } else {
+        ?>
+    <table class="table">
+        <tr>
+            <th>Ville de départ</th>
+            <th>Ville d'arrivée</th>
+            <th>Date de départ</th>
+            <th>Heure de départ</th>
+            <th>Nombre de places</th>
+            <th>Nom du covoitureur</th>
+        </tr>
+        <?php
+        foreach ($resultats as $resultat) {
+            $parcours = $parcoursManager->getParcours($resultat->getParNum());
+            $ville1 = $villeManager->getVilNom($parcours->getVilNum1());
+            $ville2 = $villeManager->getVilNom($parcours->getVilNum2());
+            $personne = $personneManager->getPerPrenom($resultat->getPerNum());
+            ?>
+            <tr>
+                <td><?php echo $ville1->getVilNom(); ?></td>
+                <td><?php echo $ville2->getVilNom(); ?></td>
+                <td><?php echo $resultat->getProDate(); ?></td>
+                <td><?php echo $resultat->getProTime(); ?></td>
+                <td><?php echo $resultat->getProPlace(); ?></td>
+                <td><?php echo $personne->getPerPrenom() . " " . $personne->getPerNom(); ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+        <?php
+    }
 }

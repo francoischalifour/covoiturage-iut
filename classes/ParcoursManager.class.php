@@ -7,7 +7,15 @@ class ParcoursManager {
     }
 
     public function add($parcours) {
-        $requete = $this->db->prepare("INSERT INTO parcours (par_km, vil_num1, vil_num2) VALUES (:par_km, :vil_num1, :vil_num2);");
+        $par1 = $this->getParcoursByVilNums($parcours->getVilNum1(), $parcours->getVilNum2());
+        $par2 = $this->getParcoursByVilNums($parcours->getVilNum2(), $parcours->getVilNum1());
+
+        // Si le parcours existe déjà
+        if ($par1 != null || $par2 != null)
+            return false;
+
+        $requete = $this->db->prepare("INSERT INTO parcours (par_num, par_km, vil_num1, vil_num2) VALUES (:par_num, :par_km, :vil_num1, :vil_num2);");
+        $requete->bindValue(':par_num', $parcours->getParNum());
         $requete->bindValue(':par_km', $parcours->getParKm());
         $requete->bindValue(':vil_num1', $parcours->getVilNum1());
         $requete->bindValue(':vil_num2', $parcours->getVilNum2());
@@ -30,5 +38,24 @@ class ParcoursManager {
         $requete->closeCursor();
 
         return $listeParcours;
+    }
+
+    public function getParcours($numero) {
+        $requete = $this->db->prepare("SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours WHERE par_num=:par_num");
+        $requete->bindValue(':par_num', $numero);
+
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getParcoursByVilNums($vil_num1, $vil_num2) {
+        $requete = $this->db->prepare("SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours WHERE vil_num1 = :vil_num1 AND vil_num2 = :vil_num2");
+        $requete->bindValue(':vil_num1', $vil_num1);
+        $requete->bindValue(':vil_num2', $vil_num2);
+
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+        return new Parcours($resultat);
     }
 }

@@ -23,7 +23,26 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <?php
+                        if (!isset($_SESSION['per_login'])) {
+                        ?>
                         <a href="index.php?page=11" class="btn btn-link">Connexion</a>
+                        <?php
+                        } else {
+                        ?>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['per_login'] ?> <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="index.php?page=5">Ajouter un parcours</a></li>
+                            <li><a href="index.php?page=7">Ajouter une ville</a></li>
+                            <li><a href="index.php?page=9">Proposer un trajet</a></li>
+                            <li class="divider"></li>
+                            <li><a href="index.php?page=12">Déconnexion</a></li>
+                          </ul>
+                        </li>
+                        <?php
+                        }
+                        ?>
                     </li>
                 </ul>
             </div>

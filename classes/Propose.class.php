@@ -16,12 +16,28 @@ class Propose {
     public function affecte($donnees) {
         foreach ($donnees as $attribut => $valeur) {
             switch ($attribut) {
-                case "vil_num":
-                    $this->setVilNum($valeur);
+                case 'par_num':
+                    $this->setParNum($valeur);
                     break;
 
-                case "vil_nom":
-                    $this->setVilNom($valeur);
+                case 'per_num':
+                    $this->setPerNum($valeur);
+                    break;
+
+                case 'pro_date':
+                    $this->setProDate($valeur);
+                    break;
+
+                case 'pro_time':
+                    $this->setProTime($valeur);
+                    break;
+
+                case 'pro_place':
+                    $this->setProPlace($valeur);
+                    break;
+
+                case 'pro_sens':
+                    $this->setProSens($valeur);
                     break;
             }
         }

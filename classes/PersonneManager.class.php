@@ -1,6 +1,7 @@
 <?php
 class PersonneManager {
     private $db;
+    private $salt = "48@!alsd";
 
     public function __construct($db) {
         $this->db = $db;
@@ -16,11 +17,15 @@ class PersonneManager {
         $requete->bindValue(':tel', $personne->getPerTel());
         $requete->bindValue(':mail', $personne->getPerMail());
         $requete->bindValue(':login', $personne->getPerLogin());
-        $requete->bindValue(':pwd', sha1(sha1($personne->getPerPwd()) . "48@!alsd"));
+        $requete->bindValue(':pwd', sha1(sha1($personne->getPerPwd()) . $this->getSalt()));
 
         $requete->execute();
 
         return $this->db->lastInsertId();
+    }
+
+    public function getSalt() {
+        return $this->salt;
     }
 
     public function getAllpersonne() {
@@ -43,6 +48,19 @@ class PersonneManager {
         $sql = "SELECT per_num, per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd
                     FROM personne WHERE per_num = $numero";
         $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        $personne = $requete->fetch(PDO::FETCH_ASSOC);
+        $maPersonne = new Personne($personne);
+
+        return $maPersonne;
+    }
+
+    public function getPersonneByLogin($login) {
+        $sql = "SELECT per_num, per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd
+                    FROM personne WHERE per_login = :per_login";
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':per_login', $login);
         $requete->execute();
 
         $personne = $requete->fetch(PDO::FETCH_ASSOC);
@@ -105,5 +123,20 @@ class PersonneManager {
         $requete = $this->db->prepare("DELETE FROM personne WHERE per_num = :numero");
         $requete->bindValue(":numero", $numero, PDO::PARAM_INT);
         $requete->execute();
+    }
+
+    public function verifPersonne($login, $mdp) {
+        $requete = $this->db->prepare("SELECT per_login FROM personne WHERE per_login = :per_login AND per_pwd = :per_pwd");
+
+        $requete->bindValue(':per_login', $login);
+        $requete->bindValue(':per_pwd', sha1(sha1($mdp) . $this->getSalt()));
+
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultat)
+            return true;
+        else
+            return false;
     }
 }
