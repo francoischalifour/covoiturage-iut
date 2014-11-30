@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['per_login'])) {
+if (isset($_SESSION['user_login'])) {
     header('Location: index.php');
 }
 ?>
@@ -47,9 +47,9 @@ if (!isset($_POST['per_login'])) {
 </div>
         <?php
     } else {
-        $_SESSION['per_login'] = $_POST['per_login'];
+        $_SESSION['user_login'] = $_POST['per_login'];
         $personne = $personneManager->getPersonneByLogin($_POST['per_login']);
-        $_SESSION['per_num'] = $personne->getPerNum();
+        $_SESSION['user_num'] = $personne->getPerNum();
 
         header('Location: index.php');
         exit();

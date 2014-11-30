@@ -109,9 +109,27 @@ if ($personneManager->isEmpty()) {
         ?>
         <div class="text-center">
             <a href="index.php?page=3&user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Modifier</a>
-            <a href="index.php?page=4&user=<?php echo $personne->getPerNum() ?>" class="btn btn-warning">Supprimer</a>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#supprimerPersonne">Supprimer</button>
         </div>
         <?php
     }
 }
 ?>
+
+<div class="modal fade" id="supprimerPersonne" tabindex="-1" role="dialog" aria-labelledby="supprimerPersonne" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+        <h4 class="modal-title">Êtes-vous sûr de vouloir supprimer cette personne ?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Cette action entrainera la suppression de toutes les données relatives à cette personne.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+         <a href="index.php?page=4&user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Oui</a>
+      </div>
+    </div>
+  </div>
+</div>

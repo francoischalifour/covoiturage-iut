@@ -30,5 +30,12 @@ if (empty($_GET['user'])) {
         } else {
         	$personneManager->deletePers($numero, 2);
         }
+
+        if (isConnected()) {
+            // Si l'utilisateur se supprime lui-même, on le déconnecte pour supprimer ses variables de session
+            if ($numero == $_SESSION['user_num']) {
+                header('Location: index.php?page=12');
+            }
+        }
     }
 }

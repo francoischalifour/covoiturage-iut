@@ -166,7 +166,9 @@ if ((empty($_POST['per_nom']) || empty($_POST['per_prenom']) || empty($_POST['pe
     </div>
     <?php
     }
-} else {
+}
+
+if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST['div_num']) || (!empty($_POST['sal_telprof']) && !empty($_POST['fon_num']))))) {
     $db = new Mypdo();
 
     // Ajout de la personne
@@ -217,5 +219,4 @@ if ((empty($_POST['per_nom']) || empty($_POST['per_prenom']) || empty($_POST['pe
         </p>
     </div>
     <?php
-    session_destroy();
 }

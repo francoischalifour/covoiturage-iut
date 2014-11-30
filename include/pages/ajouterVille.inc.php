@@ -1,5 +1,4 @@
 <h1>Ajouter une ville</h1>
-
 <?php
 require_once("include/autoload.inc.php");
 

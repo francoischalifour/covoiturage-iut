@@ -98,8 +98,8 @@ class ProposeManager {
         $requete = $this->db->prepare($requete);
         $requete->bindValue(':vil_num1', $ville_depart);
         $requete->bindValue(':vil_num2', $ville_arrivee);
-        $requete->bindValue(':pro_date_deb', precision($pro_date_deb, -$pro_prec));
-        $requete->bindValue(':pro_date_fin', precision($pro_date_deb, +$pro_prec));
+        $requete->bindValue(':pro_date_deb', addJours($pro_date_deb, -$pro_prec));
+        $requete->bindValue(':pro_date_fin', addJours($pro_date_deb, +$pro_prec));
         $requete->bindValue(':pro_time', $heure_depart);
 
         $requete->execute();
@@ -109,11 +109,5 @@ class ProposeManager {
         }
 
         return $listePropositions;
-    }
-
-    function precision($date, $nbJours){
-        $fullDate = explode('/', $date);
-        $date = $fullDate[2] . '-' . $fullDate[1] . '-' . (intval($fullDate[0]) + $nbJours);
-        return $date;
     }
 }

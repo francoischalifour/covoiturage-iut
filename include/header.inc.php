@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once("include/functions.inc.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,14 +27,14 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <?php
-                        if (!isset($_SESSION['per_login'])) {
+                        if (!isConnected()) {
                         ?>
                         <a href="index.php?page=11" class="btn btn-link">Connexion</a>
                         <?php
                         } else {
                         ?>
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['per_login'] ?> <span class="caret"></span></a>
+                          <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['user_login'] ?> <span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="index.php?page=5">Ajouter un parcours</a></li>
                             <li><a href="index.php?page=7">Ajouter une ville</a></li>

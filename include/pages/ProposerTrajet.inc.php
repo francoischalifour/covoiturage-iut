@@ -1,3 +1,8 @@
+<?php
+if (!isConnected()) {
+    header('Location: index.php?page=11');
+}
+?>
 <h1>Proposer un trajet</h1>
 <?php
 require_once("include/autoload.inc.php");
