@@ -170,53 +170,58 @@ if ((empty($_POST['per_nom']) || empty($_POST['per_prenom']) || empty($_POST['pe
 
 if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST['div_num']) || (!empty($_POST['sal_telprof']) && !empty($_POST['fon_num']))))) {
     $db = new Mypdo();
-
-    // Ajout de la personne
     $personneManager = new PersonneManager($db);
-    $personne = new Personne (
-        array(
-            'per_nom' => $_SESSION['per_nom'],
-            'per_prenom' => $_SESSION['per_prenom'],
-            'per_tel' => $_SESSION['per_tel'],
-            'per_mail' => $_SESSION['per_mail'],
-            'per_login' => $_SESSION['per_login'],
-            'per_pwd' => $_SESSION['per_pwd'],
-            )
-        );
-    $numPersonne = $personneManager->add($personne);
 
-    if (!empty($_POST['sal_telprof'])) {
-        // Ajout du salarié
-        $salarieManager = new SalarieManager($db);
-
-        $salarie = new Salarie (
+    if ($personneManager->isLoginAlreadyRegistered($_SESSION['per_login'])) {
+        ?>
+    <p class="alert alert-danger">Une personne utilise déjà ce login.</p>
+        <?php
+    } else {
+        $personne = new Personne (
             array(
-                'per_num' => $db->lastInsertId(),
-                'sal_telprof' => $_POST['sal_telprof'],
-                'fon_num' => $_POST['fon_num'],
+                'per_nom' => $_SESSION['per_nom'],
+                'per_prenom' => $_SESSION['per_prenom'],
+                'per_tel' => $_SESSION['per_tel'],
+                'per_mail' => $_SESSION['per_mail'],
+                'per_login' => $_SESSION['per_login'],
+                'per_pwd' => $_SESSION['per_pwd'],
                 )
             );
-        $salarieManager->add($salarie);
-    } else if (!empty($_POST['dep_num'])) {
-        // Ajout de l'étudiant
-        $etudiantManager = new EtudiantManager($db);
+        $numPersonne = $personneManager->add($personne);
 
-        $etudiant = new Etudiant (
-            array(
-                'per_num' => $db->lastInsertId(),
-                'dep_num' => $_POST['dep_num'],
-                'div_num' => $_POST['div_num'],
-                )
-            );
-        $etudiantManager->add($etudiant);
+        if (!empty($_POST['sal_telprof'])) {
+            // Ajout du salarié
+            $salarieManager = new SalarieManager($db);
+
+            $salarie = new Salarie (
+                array(
+                    'per_num' => $db->lastInsertId(),
+                    'sal_telprof' => $_POST['sal_telprof'],
+                    'fon_num' => $_POST['fon_num'],
+                    )
+                );
+            $salarieManager->add($salarie);
+        } else if (!empty($_POST['dep_num'])) {
+            // Ajout de l'étudiant
+            $etudiantManager = new EtudiantManager($db);
+
+            $etudiant = new Etudiant (
+                array(
+                    'per_num' => $db->lastInsertId(),
+                    'dep_num' => $_POST['dep_num'],
+                    'div_num' => $_POST['div_num'],
+                    )
+                );
+            $etudiantManager->add($etudiant);
+        }
+        ?>
+        <div class="row col-md-8 col-md-offset-2">
+            <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
+            <p class="text-center">
+                <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
+                <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir le profil de la nouvelle personne</a>
+            </p>
+        </div>
+        <?php
     }
-    ?>
-    <div class="row col-md-8 col-md-offset-2">
-        <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
-        <p class="text-center">
-            <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
-            <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir le profil de la nouvelle personne</a>
-        </p>
-    </div>
-    <?php
 }

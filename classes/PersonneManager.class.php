@@ -24,10 +24,6 @@ class PersonneManager {
         return $this->db->lastInsertId();
     }
 
-    public function getSalt() {
-        return $this->salt;
-    }
-
     public function getAllpersonne() {
         $listePersonnes = array();
         $sql = "SELECT per_num, per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd
@@ -84,11 +80,10 @@ class PersonneManager {
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_NUM)[0];
 
-        if ($resultat == 0) {
+        if ($resultat == 0)
             return true;
-        } else {
+        else
             return false;
-        }
     }
 
     public function updatePers($personne) {
@@ -138,5 +133,21 @@ class PersonneManager {
             return true;
         else
             return false;
+    }
+
+    public function isLoginAlreadyRegistered($login) {
+        $requete = $this->db->prepare("SELECT COUNT(*) FROM personne WHERE per_login = :per_login");
+        $requete->bindValue(':per_login', $login);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_NUM)[0];
+
+        if ($resultat == 0)
+            return false;
+        else
+            return true;
+    }
+
+    public function getSalt() {
+        return $this->salt;
     }
 }

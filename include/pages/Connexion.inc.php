@@ -3,7 +3,7 @@ if (isset($_SESSION['user_login'])) {
     header('Location: index.php');
 }
 ?>
- <h1>Se connecter</h1>
+ <h1>Connexion</h1>
 <?php
 require_once("include/autoload.inc.php");
 
