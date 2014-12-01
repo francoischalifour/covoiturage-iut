@@ -50,11 +50,11 @@ if (!isset($_POST['per_login'])) {
         $_SESSION['user_login'] = $_POST['per_login'];
         $personne = $personneManager->getPersonneByLogin($_POST['per_login']);
         $_SESSION['user_num'] = $personne->getPerNum();
-
-        header('Location: index.php');
-        exit();
 ?>
 <p class="alert alert-success">Vous êtes maintenant connecté.</p>
+<div class="text-center">
+    <a href="index.php" class="btn btn-primary">Aller à l'accueil</a>
+</div>
 <?php
     }
 }
