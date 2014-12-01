@@ -11,6 +11,7 @@
     <script src="js/ripples.js"></script>
     <script src="js/moment.js"></script>
     <script src="js/datetimepicker.js"></script>
+    <script src="js/sorttable.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#datepicker').datetimepicker({

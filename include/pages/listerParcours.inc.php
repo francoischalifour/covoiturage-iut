@@ -9,12 +9,12 @@ $parcours = $parcoursManager->getAllParcours();
 
 <h1>Liste des parcours proposés</h1>
 
-<table class="table">
+<table class="table sortable">
     <tr>
-        <th>Numéro</th>
-        <th>Ville de départ</th>
-        <th>Ville d'arrivée</th>
-        <th>Nombre de Km</th>
+        <th class="pointer">Numéro</th>
+        <th class="pointer">Ville de départ</th>
+        <th class="pointer">Ville d'arrivée</th>
+        <th class="pointer">Nombre de kilomètres</th>
     </tr>
     <?php
     foreach ($parcours as $par) {

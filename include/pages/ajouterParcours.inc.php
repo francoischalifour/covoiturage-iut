@@ -52,7 +52,7 @@ $villes = $villeManager->getAllVille();
             <label for="par_km">Nombre de kilomètres</label>
         </div>
         <div class="col-lg-10">
-            <input type="text" placeholder="Nombre de kilomètres" class="form-control" name="par_km" pattern="[0-9]{1,4}$" title="La distance doit être un entier positif." required="required">
+            <input type="text" placeholder="Nombre de kilomètres" class="form-control" name="par_km" pattern="[1-9]{1,4}$" title="La distance doit être un entier positif." required="required">
         </div>
     </div>
 

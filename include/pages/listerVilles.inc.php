@@ -8,10 +8,10 @@ $villes = $villeManager->getAllVille();
 
 <h1>Liste des villes</h1>
 
-<table class="table">
+<table class="table sortable">
     <tr>
-        <th>Numéro</th>
-        <th>Nom</th>
+        <th class="pointer">Numéro</th>
+        <th class="pointer">Nom</th>
     </tr>
     <?php
     foreach ($villes as $ville) {

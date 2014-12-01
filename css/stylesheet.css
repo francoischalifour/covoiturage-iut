@@ -18,6 +18,16 @@ body {
     border-radius: 0;
 }
 
+.panel-heading.panel-menu {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.panel-heading + .panel-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .panel-menu ul {
     padding-left: 0;
     line-height: 1.8;
@@ -54,4 +64,21 @@ body {
     border-top: 1px solid #ddd;
     text-align: center;
     box-shadow: 0 -3px 10px 0 rgba(188,188,188,.16);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    box-shadow: 0 5px 16px .0 rgba(0,0,0,.16);
+}
+
+.dropdown-menu li:not(.divider) {
+    padding: 4px 0;
+}
+
+.dropdown-menu li:not(.divider):hover {
+    background-color: #f9f9f9;
 }

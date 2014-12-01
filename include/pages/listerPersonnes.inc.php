@@ -15,11 +15,11 @@ if ($personneManager->isEmpty()) {
     <?php
 } else {
 ?>
-<table class="table">
+<table class="table sortable">
     <tr>
-        <th>Numéro</th>
-        <th>Prénom</th>
-        <th>Nom</th>
+        <th class="pointer">Numéro</th>
+        <th class="pointer">Prénom</th>
+        <th class="pointer">Nom</th>
     </tr>
     <?php
     foreach ($personnes as $personne) {
