@@ -12,7 +12,7 @@ class ProposeManager {
                             VALUES (:par_num, :per_num, :pro_date, :pro_time, :pro_place, :pro_sens);");
         $requete->bindValue(':par_num', $propose->getParNum());
         $requete->bindValue(':per_num', $propose->getPerNum());
-        $requete->bindValue(':pro_date', $propose->getProDate());
+        $requete->bindValue(':pro_date', getEnglishDate($propose->getProDate()));
         $requete->bindValue(':pro_time', $propose->getProTime());
         $requete->bindValue(':pro_place', $propose->getProPlace());
         $requete->bindValue(':pro_sens', $propose->getProSens());
@@ -39,8 +39,7 @@ class ProposeManager {
 
     public function getAllVilleDepart() {
         $listeVilles = array();
-        $pdo = new MyPdo();
-        $villeManager = new VilleManager($pdo);
+        $villeManager = new VilleManager($this->db);
 
         $requete = "SELECT vil_num1 AS vil_num FROM parcours p
                                 INNER JOIN propose pr ON pr.par_num = p.par_num
@@ -54,7 +53,7 @@ class ProposeManager {
         $requete->execute();
 
         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listeVilles[] = $villeManager->getVilNom($ligne['vil_num']);
+            $listeVilles[] = new Ville(array('vil_nom' => $villeManager->getVilNom($ligne['vil_num']), 'vil_num' => $ligne['vil_num']));
         }
 
         return $listeVilles;
@@ -62,8 +61,7 @@ class ProposeManager {
 
     public function getAllVilleArrivee($vil_numDepart) {
         $listeVilles = array();
-        $pdo = new MyPdo();
-        $villeManager = new VilleManager($pdo);
+        $villeManager = new VilleManager($this->db);
 
         $requete = "SELECT vil_num2 AS vil_num FROM parcours p
                                 INNER JOIN propose pr ON pr.par_num = p.par_num
@@ -78,7 +76,7 @@ class ProposeManager {
         $requete->execute();
 
         while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listeVilles[] = $villeManager->getVilNom($ligne['vil_num']);
+            $listeVilles[] = new Ville(array('vil_nom' => $villeManager->getVilNom($ligne['vil_num']), 'vil_num' => $ligne['vil_num']));
         }
 
         return $listeVilles;
@@ -96,11 +94,11 @@ class ProposeManager {
               WHERE vil_num2 = :vil_num1 AND vil_num1 = :vil_num2 AND pro_sens = 1 AND pro_date BETWEEN :pro_date_deb AND :pro_date_fin AND pro_time >= :pro_time";
 
         $requete = $this->db->prepare($requete);
-        $requete->bindValue(':vil_num1', $ville_depart);
-        $requete->bindValue(':vil_num2', $ville_arrivee);
+        $requete->bindValue(':vil_num1', $vil_num1);
+        $requete->bindValue(':vil_num2', $vil_num2);
         $requete->bindValue(':pro_date_deb', addJours($pro_date_deb, -$pro_prec));
         $requete->bindValue(':pro_date_fin', addJours($pro_date_deb, +$pro_prec));
-        $requete->bindValue(':pro_time', $heure_depart);
+        $requete->bindValue(':pro_time', $pro_time);
 
         $requete->execute();
 

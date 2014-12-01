@@ -8,6 +8,7 @@ if (!isConnected()) {
 require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
+$proposeManager = new ProposeManager($pdo);
 
 if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
     $proposeManager = new ProposeManager($pdo);
@@ -39,7 +40,6 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
     <?php
 } else if (empty($_POST['vil_num2']) && !empty($_POST['vil_num'])) {
     $villeManager = new VilleManager($pdo);
-    $proposeManager = new ProposeManager($pdo);
     $ville = $villeManager->getVilNom($_POST['vil_num']);
     $_SESSION['vil_num'] = $_POST['vil_num'];
     ?>
@@ -51,7 +51,7 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
                         <label for="vil_num">Ville de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <?php echo $ville->getVilNom() ?>
+                        <?php echo $villeManager->getVilNom($_SESSION['vil_num']) ?>
                     </div>
                 </div>
 
@@ -72,14 +72,10 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
                         <label for="pro_time">A partir de</label>
                     </div>
                     <div class="col-lg-6">
-                        <select name="pro_time" id="pro_time" class="form-control">
-                            <?php
-                            for ($i = 0; $i <= 23; $i++) {
-                            ?>
-                                <option value="<?php echo $i ?>"><?php echo ($i<10) ? "0".$i : $i; ?>h</option>
-                            <?php
-                            } ?>
-                        </select>
+                        <div class="input-group date" id="timepicker">
+                            <input type="text" name="pro_time" id="pro_time" class="form-control" placeholder="HH:MM" pattern="[0-9]{2}:[0-9]{2}" title="L'heure doit être de la forme HH:MM." required="required">
+                            <span class="input-group-addon"><i class="mdi-action-schedule"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,18 +146,18 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
         </tr>
         <?php
         foreach ($resultats as $resultat) {
-            $parcours = $parcoursManager->getParcours($resultat->getParNum());
+            $parcours = $parcoursManager->getParcours($resultat->getParNum())[0];
             $ville1 = $villeManager->getVilNom($parcours->getVilNum1());
             $ville2 = $villeManager->getVilNom($parcours->getVilNum2());
-            $personne = $personneManager->getPerPrenom($resultat->getPerNum());
+            $personne = $personneManager->getPersonne($resultat->getPerNum());
             ?>
             <tr>
-                <td><?php echo $ville1->getVilNom(); ?></td>
-                <td><?php echo $ville2->getVilNom(); ?></td>
-                <td><?php echo $resultat->getProDate(); ?></td>
-                <td><?php echo $resultat->getProTime(); ?></td>
-                <td><?php echo $resultat->getProPlace(); ?></td>
-                <td><?php echo $personne->getPerPrenom() . " " . $personne->getPerNom(); ?></td>
+                <td><?php echo $ville1 ?></td>
+                <td><?php echo $ville2 ?></td>
+                <td><?php echo $resultat->getProDate() ?></td>
+                <td><?php echo $resultat->getProTime() ?></td>
+                <td><?php echo $resultat->getProPlace() ?></td>
+                <td><?php echo $personne->getPerPrenom() . " " . $personne->getPerNom() ?></td>
             </tr>
             <?php
         }
@@ -169,4 +165,10 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
     </table>
         <?php
     }
+    ?>
+
+    <div class="text-center">
+        <a href="index.php?page=10" class="btn btn-default">Faire une nouvelle recherche</a>
+    </div>
+    <?php
 }

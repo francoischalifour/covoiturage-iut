@@ -12,7 +12,8 @@ $parcoursManager = new ParcoursManager($pdo);
 $villeManager = new VilleManager($pdo);
 $villes = $villeManager->getAllVille();
 
-if (empty($_POST['vil_num'])) {
+if (empty($_POST['vil_num2'])) {
+    if (empty($_POST['vil_num'])) {
     ?>
     <form action="#" method ="post">
         <div class="row form-group">
@@ -38,10 +39,9 @@ if (empty($_POST['vil_num'])) {
         </div>
     </form>
     <?php
-} else {
-    $_SESSION['vil_num'] = $_POST['vil_num'];
-    $villesArrivee = $parcoursManager->getVilNumInParcours($_SESSION['vil_num']);
-    var_dump($villesArrivee);
+    } else {
+        $_SESSION['vil_num'] = $_POST['vil_num'];
+        $villesArrivee = $parcoursManager->getVilNomInParcours($_SESSION['vil_num']);
     ?>
     <form action ="#" method ="post">
         <div class="row">
@@ -51,7 +51,7 @@ if (empty($_POST['vil_num'])) {
                         <label for="vil_num1">Ville de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <?php echo $villeManager->getVilNom($_SESSION['vil_num'])->vil_nom ?>
+                        <?php echo $villeManager->getVilNom($_SESSION['vil_num']) ?>
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@ if (empty($_POST['vil_num'])) {
                         <label for="pro_place">Nombre de places</label>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" name="pro_place" id="pro_place" class="form-control" placeholder="Nombre de places" pattern="[1-9]" title="Le nombre de places doit être compris entre 1 et 9." required="required">
+                        <input type="number" name="pro_place" id="pro_place" class="form-control" placeholder="Nombre de places" min="1" max="9" title="Le nombre de places doit être compris entre 1 et 9." required="required">
                     </div>
                 </div>
             </div>
@@ -116,18 +116,15 @@ if (empty($_POST['vil_num'])) {
         </div>
     </form>
     <?php
-}
+    }
 
-if (!empty($_POST['vil_num2'])) {
+} else {
     $proposeManager = new ProposeManager($pdo);
 
     $parcours = $parcoursManager->getParcoursByVilNums($_SESSION['vil_num'], $_POST['vil_num2']);
-    var_dump($parcours);
 
     if ($parcours == NULL)
         $parcours = $parcoursManager->getParcoursByVilNums($_POST["vil_num2"], $_SESSION["vil_num"]);
-
-    var_dump($parcours);
 
     if ($parcours->getVilNum1() == $_SESSION['vil_num'])
         $sens = 0;
@@ -144,11 +141,13 @@ if (!empty($_POST['vil_num2'])) {
         )
     );
 
-    var_dump($parcours->getParNum());
-
     $propose->setParNum($parcours->getParNum());
 
-    var_dump($propose);
-
     $proposeManager->add($propose);
+    ?>
+<p class="alert alert-success">Votre trajet a bien été ajouté. Bonne route !</p>
+<div class="text-center">
+    <a href="index.php" class="btn btn-primary">Revenir à l'accueil</a>
+</div>
+    <?php
 }

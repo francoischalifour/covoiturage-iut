@@ -14,7 +14,7 @@ class ParcoursManager {
         if ($par1 != null || $par2 != null)
             return false;
 
-        $requete = $this->db->prepare("INSERT INTO parcours (par_num, par_km, vil_num1, vil_num2) VALUES (:par_num, :par_km, :vil_num1, :vil_num2);");
+        $requete = $this->db->prepare("INSERT INTO parcours (par_num, par_km, vil_num1, vil_num2) VALUES (:par_num, :par_km, :vil_num1, :vil_num2)");
         $requete->bindValue(':par_num', $parcours->getParNum());
         $requete->bindValue(':par_km', $parcours->getParKm());
         $requete->bindValue(':vil_num1', $parcours->getVilNum1());
@@ -31,7 +31,7 @@ class ParcoursManager {
         $requete = $this->db->prepare($sql);
         $requete->execute();
 
-        while ($parcours = $requete->fetch(PDO::FETCH_ASSOC)) {
+        while ($parcours = $requete->fetch(PDO::FETCH_OBJ)) {
             $listeParcours[] = new Parcours($parcours);
         }
 
@@ -41,11 +41,17 @@ class ParcoursManager {
     }
 
     public function getParcours($numero) {
-        $requete = $this->db->prepare("SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours WHERE par_num=:par_num");
+        $requete = $this->db->prepare("SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours WHERE par_num = :par_num");
         $requete->bindValue(':par_num', $numero);
-
         $requete->execute();
-        $resultat = $requete->fetch(PDO::FETCH_ASSOC);
+
+        while ($parcours = $requete->fetch(PDO::FETCH_OBJ)) {
+            $listeParcours[] = new Parcours($parcours);
+        }
+
+        $requete->closeCursor();
+
+        return $listeParcours;
     }
 
     public function getParcoursByVilNums($vil_num1, $vil_num2) {
@@ -62,7 +68,7 @@ class ParcoursManager {
             return null;
     }
 
-    public function getVilNumInParcours($vil_num) {
+    public function getVilNomInParcours($vil_num) {
         $listeVilles = array();
         $villeManager = new VilleManager($this->db);
         $requete = "SELECT vil_num1 AS vil_num FROM parcours WHERE vil_num2 = :vil_num
@@ -74,7 +80,7 @@ class ParcoursManager {
         $requete->execute();
 
         while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
-            $listeVilles[] = $villeManager->getVilNom($ligne["vil_num"]);
+            $listeVilles[] = new Ville(array('vil_nom' => $villeManager->getVilNom($ligne['vil_num']), 'vil_num' => $ligne['vil_num']));
         }
 
         return $listeVilles;

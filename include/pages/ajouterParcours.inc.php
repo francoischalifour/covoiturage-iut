@@ -75,8 +75,8 @@ $villes = $villeManager->getAllVille();
     $manager->add($parcours);
     ?>
     <p class="alert alert-success">Le parcours entre
-    <?php echo $villeManager->getVilNom($parcours->getVilNum1())->vil_nom ?> et
-    <?php echo $villeManager->getVilNom($parcours->getVilNum2())->vil_nom ?> a été ajouté
+    <?php echo $villeManager->getVilNom($parcours->getVilNum1()) ?> et
+    <?php echo $villeManager->getVilNom($parcours->getVilNum2()) ?> a été ajouté
     (<?php echo $_POST['par_km'] ?> km).</p>
     <?php
 }
