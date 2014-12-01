@@ -106,12 +106,18 @@ if ($personneManager->isEmpty()) {
             </table>
         <?php
         }
+
+        if (isConnected()) {
+            // On affiche les informations de modification s'il s'agit de l'utilisateur connecté
+            if ($numero == $_SESSION['user_num']) {
         ?>
         <div class="text-center">
             <a href="index.php?page=3&user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Modifier</a>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#supprimerPersonne">Supprimer</button>
         </div>
         <?php
+            }
+        }
     }
 }
 ?>

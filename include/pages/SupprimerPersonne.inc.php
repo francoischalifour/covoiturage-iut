@@ -19,22 +19,27 @@ if (empty($_GET['user'])) {
         <p>L'utilisateur que vous recherchez n'existe pas.</p>
     <?php
     } else {
-        $personne = $personneManager->getPersonne($numero);
-        $etudiantManager = new EtudiantManager($pdo);
-        ?>
-        <h1>Suppression d'une personne</h1>
-        <p class="alert alert-success">La personne <strong><?php echo $personne->getPerPrenom() . ' ' . $personne->getPerNom() ?></strong> a bien été supprimée.</p>
-        <?php
-        if ($etudiantManager->isEtudiant($numero)) {
-        	$personneManager->deletePers($numero, 1);
-        } else {
-        	$personneManager->deletePers($numero, 2);
-        }
-
         if (isConnected()) {
-            // Si l'utilisateur se supprime lui-même, on le déconnecte pour supprimer ses variables de session
+            // On affiche les informations de modification s'il s'agit de l'utilisateur connecté
             if ($numero == $_SESSION['user_num']) {
+                $personne = $personneManager->getPersonne($numero);
+                $etudiantManager = new EtudiantManager($pdo);
+                ?>
+                <h1>Suppression d'une personne</h1>
+                <p class="alert alert-success">La personne <strong><?php echo $personne->getPerPrenom() . ' ' . $personne->getPerNom() ?></strong> a bien été supprimée.</p>
+                <?php
+                if ($etudiantManager->isEtudiant($numero)) {
+                	$personneManager->deletePers($numero, 1);
+                } else {
+                	$personneManager->deletePers($numero, 2);
+                }
+
                 header('Location: index.php?page=12');
+            } else {
+                ?>
+            <h1>Autorisation nécessaire</h1>
+            <p>Vous ne pouvez pas supprimer cette personne.</p>
+                <?php
             }
         }
     }

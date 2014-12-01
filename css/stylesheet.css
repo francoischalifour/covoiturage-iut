@@ -8,7 +8,7 @@ body {
     line-height: 2.2;
 }
 
-@media (min-width: 1400px) {
+@media(min-width:1400px) {
     .container {
         width: 1370px;
     }
@@ -19,9 +19,9 @@ body {
 }
 
 .panel-menu ul {
-    list-style: none;
     padding-left: 0;
     line-height: 1.8;
+    list-style: none;
 }
 
 .panel-menu li {
@@ -30,12 +30,12 @@ body {
 
 .panel-menu li a {
     display: block;
-    text-decoration: none;
     padding: 6px 12px;
     border-radius: 3px;
+    text-decoration: none;
 }
 
-@media(max-width: 990px) {
+@media(max-width:990px) {
     .panel-menu li {
         display: inline-block;
     }
@@ -49,9 +49,9 @@ body {
     width: 100%;
     height: 50px;
     margin-top: 32px;
-    padding-top: 32px;
-    text-align: center;
-    color: #666;
-    background-color: #f7f7f7;
+    padding-top: 42px;
     min-height: 124px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    box-shadow: 0 -3px 10px 0 rgba(188,188,188,.16);
 }
