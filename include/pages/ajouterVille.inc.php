@@ -21,15 +21,27 @@ if (empty($_POST['vil_nom'])) {
     <?php
 } else {
     $db = new Mypdo();
-    $manager = new VilleManager($db);
+    $villeManager = new VilleManager($db);
 
-    $ville = new Ville (
-        array(
-            'vil_nom' => $_POST['vil_nom'],
-            )
-        );
-    $manager->add($ville);
-    ?>
+    if ($villeManager->isVilleAlreadyRegistered($_POST['vil_nom'])) {
+        ?>
+    <p class="alert alert-danger">Cette ville est déjà référencée.</p>
+    <div class="text-center">
+        <a href="index.php?page=7" class="btn btn-default">Recommencer</a>
+    </div>
+        <?php
+    } else {
+        $ville = new Ville (
+            array(
+                'vil_nom' => $_POST['vil_nom'],
+                )
+            );
+        $villeManager->add($ville);
+        ?>
     <p class="alert alert-success">La ville <strong><?php echo $_POST['vil_nom'] ?></strong> a bien été ajoutée.</p>
-    <?php
+    <div class="text-center">
+        <a href="index.php?page=8" class="btn btn-default">Retour à la liste des villes</a>
+    </div>
+        <?php
+    }
 }

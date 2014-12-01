@@ -176,9 +176,9 @@ if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST
         ?>
     <h1>Ajouter une personne</h1>
     <p class="alert alert-danger">Une personne utilise déjà ce login.</p>
-    <p class="text-center">
+    <div class="text-center">
         <a href="index.php?page=1" class="btn btn-default">Recommencer</a>
-    </p>
+    </div>
         <?php
     } else {
         $personne = new Personne (

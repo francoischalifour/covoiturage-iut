@@ -72,11 +72,23 @@ $villes = $villeManager->getAllVille();
             'vil_num2' => $_POST['vil_num2']
             )
         );
-    $manager->add($parcours);
-    ?>
+    $reponse = $manager->add($parcours);
+
+    if (!$reponse) {
+        ?>
+    <p class="alert alert-danger">Ce parcours est déjà référencé.</p>
+        <?php
+    } else {
+        ?>
     <p class="alert alert-success">Le parcours entre
-    <?php echo $villeManager->getVilNom($parcours->getVilNum1()) ?> et
-    <?php echo $villeManager->getVilNom($parcours->getVilNum2()) ?> a été ajouté
-    (<?php echo $_POST['par_km'] ?> km).</p>
+    <strong><?php echo $villeManager->getVilNom($parcours->getVilNum1()) ?></strong> et
+    <strong><?php echo $villeManager->getVilNom($parcours->getVilNum2()) ?></strong> a été ajouté
+    (<strong><?php echo $_POST['par_km'] ?> km</strong>).</p>
+        <?php
+        }
+        ?>
+    <div class="text-center">
+        <a href="index.php?page=6" class="btn btn-default">Retour à la liste des parcours</a>
+    </div>
     <?php
 }
