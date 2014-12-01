@@ -14,6 +14,4 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12"><?php require_once("include/footer.inc.php"); ?></div>
-</div>
+<?php require_once("include/footer.inc.php"); ?>

@@ -1,5 +1,4 @@
-<div class="panel">
-    <div class="panel-body">
+<div class="well">
     <?php
     if (!empty($_GET["page"])) {
         $page = $_GET["page"];
@@ -89,5 +88,4 @@
             include_once('pages/accueil.inc.php');
     }
     ?>
-    </div>
 </div>

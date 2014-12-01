@@ -1,4 +1,7 @@
+<?php require_once("include/autoload.inc.php"); ?>
+
 <h1>Partagez plus que votre véhicule !</h1>
+<br>
 <div class="row">
     <div class="col-md-4 text-center">
         <img src="image/etape1.png" alt="Ajoutez votre ville" class="img-responsive img-circle">
@@ -16,3 +19,40 @@
         <p>Bientôt l'heure de partir ? Alors publiez votre annonce en précisant l'heure de départ !</p>
     </div>
 </div>
+</div>
+
+<?php
+$pdo = new MyPdo();
+$personneManager = new PersonneManager($pdo);
+$user = $personneManager->getPersonneByLogin($_SESSION['user_login']);
+
+if (!isConnected()) {
+    ?>
+<div class="well">
+    <h2>Rejoignez-nous</h2>
+    <div class="text-center">
+        <p class="lead">Qu'attendez-vous ?</p>
+        <p>Toute une communauté vous attend pour faire connaissance.</p>
+        <a href="index.php?page=1" class="btn btn-primary">Inscription</a>
+    </div>
+    <?php
+} else {
+    ?>
+<div class="well">
+    <h2>Bonjour <?php echo $user->getPerPrenom() ?></h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center">
+                <p class="h4">Avez-vous prévu de voyager ?</p>
+                <a href="index.php?page=9" class="btn btn-primary btn-flat">Proposer un trajet</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <p class="h4">Besoin d'un conducteur ?</p>
+                <a href="index.php?page=10" class="btn btn-primary btn-flat">Rechercher un trajet</a>
+            </div>
+        </div>
+    </div>
+    <?php
+}
