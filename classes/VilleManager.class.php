@@ -39,4 +39,20 @@ class VilleManager {
 
         return $requete->fetch(PDO::FETCH_NUM)[0];
     }
+
+    public function isVilleAlreadyRegistered($vil_nom) {
+        $requete = $this->db->prepare("SELECT COUNT(*) FROM ville WHERE vil_nom = :vil_nom");
+        $requete->bindValue(':vil_nom', $vil_nom);
+        $requete->execute();
+        $resultat = $requete->fetch(PDO::FETCH_NUM)[0];
+
+        if ($resultat == 0)
+            return false;
+        else
+            return true;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
 }
