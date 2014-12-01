@@ -1,10 +1,13 @@
-<?php
-if (!isConnected()) {
-    header('Location: index.php?page=11');
-}
-?>
 <h1>Rechercher un trajet</h1>
 <?php
+if (!isConnected()) {
+    ?>
+    <p>Vous devez être connecté pour accéder à cette page.</p>
+    <div class="text-center">
+        <a href="index.php?page=11" class="btn btn-primary">Accéder à la page de connexion</a>
+    </div>
+    <?php
+} else {
 require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
@@ -171,4 +174,5 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
         <a href="index.php?page=10" class="btn btn-default">Faire une nouvelle recherche</a>
     </div>
     <?php
+}
 }

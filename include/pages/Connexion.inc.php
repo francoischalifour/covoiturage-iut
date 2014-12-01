@@ -54,6 +54,7 @@ if (!isset($_POST['per_login'])) {
 <p class="alert alert-success">Vous êtes maintenant connecté.</p>
 <div class="text-center">
     <a href="index.php" class="btn btn-primary">Aller à l'accueil</a>
+    <a href="javascript:history.go(-2)" class="btn btn-primary btn-flat">Revenir à la page précédente</a>
 </div>
 <?php
     }
