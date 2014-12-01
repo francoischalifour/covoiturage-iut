@@ -27,7 +27,7 @@ if (empty($_POST['vil_nom'])) {
         ?>
     <p class="alert alert-danger">Cette ville est déjà référencée.</p>
     <div class="text-center">
-        <a href="index.php?page=7" class="btn btn-default">Recommencer</a>
+        <a href="index.php?page=7" class="btn btn-primary btn-flat">Recommencer</a>
     </div>
         <?php
     } else {

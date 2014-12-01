@@ -112,7 +112,7 @@ if ($personneManager->isEmpty()) {
             if ($numero == $_SESSION['user_num']) {
         ?>
         <div class="text-center">
-            <a href="index.php?page=3&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Modifier</a>
+            <a href="index.php?page=3&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-primary">Modifier</a>
             <button type="button" class="btn btn-warning btn-flat" data-toggle="modal" data-target="#supprimerPersonne">Supprimer</button>
         </div>
         <?php
@@ -133,8 +133,8 @@ if ($personneManager->isEmpty()) {
         <p>Cette action entrainera la suppression de toutes les données relatives à cette personne.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
-         <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary">Oui</a>
+        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Non</button>
+         <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-flat">Oui</a>
       </div>
     </div>
   </div>

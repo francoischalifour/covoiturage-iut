@@ -20,16 +20,19 @@
     </div>
 </div>
 </div>
+</div>
 
 <?php
 if (!isConnected()) {
     ?>
 <div class="well">
-    <h2>Rejoignez-nous</h2>
-    <div class="text-center">
-        <p class="lead">Qu'attendez-vous ?</p>
-        <p>Toute une communauté vous attend pour faire connaissance.</p>
-        <a href="index.php?page=1" class="btn btn-primary">Inscription</a>
+    <div class="panel-body">
+        <h2>Rejoignez-nous</h2>
+        <div class="text-center">
+            <p class="lead">Qu'attendez-vous ?</p>
+            <p>Toute une communauté vous attend pour faire connaissance.</p>
+            <a href="index.php?page=1" class="btn btn-primary">Inscription</a>
+        </div>
     </div>
     <?php
 } else {
@@ -38,18 +41,20 @@ if (!isConnected()) {
     $user = $personneManager->getPersonneByLogin($_SESSION['user_login']);
     ?>
 <div class="well">
-    <h2>Bonjour <?php echo $user->getPerPrenom() ?></h2>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="text-center">
-                <p class="h4">Avez-vous prévu de voyager ?</p>
-                <a href="index.php?page=9" class="btn btn-primary btn-flat">Proposer un trajet</a>
+    <div class="panel-body">
+        <h2>Bonjour <?php echo $user->getPerPrenom() ?></h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <p class="h4">Avez-vous prévu de voyager ?</p>
+                    <a href="index.php?page=9" class="btn btn-primary btn-flat">Proposer un trajet</a>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="text-center">
-                <p class="h4">Besoin d'un conducteur ?</p>
-                <a href="index.php?page=10" class="btn btn-primary btn-flat">Rechercher un trajet</a>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <p class="h4">Besoin d'un conducteur ?</p>
+                    <a href="index.php?page=10" class="btn btn-primary btn-flat">Rechercher un trajet</a>
+                </div>
             </div>
         </div>
     </div>
