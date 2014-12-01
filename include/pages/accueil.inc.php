@@ -22,10 +22,6 @@
 </div>
 
 <?php
-$pdo = new MyPdo();
-$personneManager = new PersonneManager($pdo);
-$user = $personneManager->getPersonneByLogin($_SESSION['user_login']);
-
 if (!isConnected()) {
     ?>
 <div class="well">
@@ -37,6 +33,9 @@ if (!isConnected()) {
     </div>
     <?php
 } else {
+    $pdo = new MyPdo();
+    $personneManager = new PersonneManager($pdo);
+    $user = $personneManager->getPersonneByLogin($_SESSION['user_login']);
     ?>
 <div class="well">
     <h2>Bonjour <?php echo $user->getPerPrenom() ?></h2>
