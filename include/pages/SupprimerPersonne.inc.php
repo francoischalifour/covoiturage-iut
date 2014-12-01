@@ -29,9 +29,9 @@ if (empty($_GET['user'])) {
                 <p class="alert alert-success">La personne <strong><?php echo $personne->getPerPrenom() . ' ' . $personne->getPerNom() ?></strong> a bien été supprimée.</p>
                 <?php
                 if ($etudiantManager->isEtudiant($numero)) {
-                	$personneManager->deletePers($numero, 1);
+                	   $personneManager->deletePers($numero, 1);
                 } else {
-                	$personneManager->deletePers($numero, 2);
+                	   $personneManager->deletePers($numero, 2);
                 }
 
                 ?>
