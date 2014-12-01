@@ -19,6 +19,15 @@ if (empty($_GET['user'])) {
         <p>L'utilisateur que vous recherchez n'existe pas.</p>
     <?php
     } else {
+        if (!isConnected() || $numero != $_SESSION['user_num']) {
+            ?>
+            <h1>Action non autorisée</h1>
+            <p class="alert alert-danger">Vous ne pouvez pas modifier cette personne.</p>
+            <p class="text-center">
+                <button onclick="history.back()" class="btn btn-default">Revenir à la page précédente</button>
+            </p>
+            <?php
+        } else {
     ?>
         <form action="#" method="post">
         <?php
@@ -160,7 +169,12 @@ if (empty($_GET['user'])) {
             }
             ?>
             <p class="alert alert-success">La personne a bien été modifiée.</p>
+            <p class="text-center">
+                <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
+                <a href="index.php?page=2&user=<?php echo $_SESSION['user_num'] ?>" class="btn btn-default">Retour au profil</a>
+            </p>
             <?php
+            }
         }
     }
 }

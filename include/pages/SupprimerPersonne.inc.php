@@ -34,11 +34,19 @@ if (empty($_GET['user'])) {
                 	$personneManager->deletePers($numero, 2);
                 }
 
-                header('Location: index.php?page=12');
+                ?>
+                <div class="text-center">
+                    <a href="index.php" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+                <?php
+                session_destroy();
             } else {
                 ?>
-            <h1>Autorisation nécessaire</h1>
-            <p>Vous ne pouvez pas supprimer cette personne.</p>
+            <h1>Action non autorisée</h1>
+            <p class="alert alert-danger">Vous ne pouvez pas supprimer cette personne.</p>
+            <p class="text-center">
+                <button onclick="history.back()" class="btn btn-default">Revenir à la page précédente</button>
+            </p>
                 <?php
             }
         }

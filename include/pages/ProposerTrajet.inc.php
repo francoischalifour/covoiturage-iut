@@ -10,7 +10,6 @@ require_once("include/autoload.inc.php");
 $pdo = new MyPdo();
 $parcoursManager = new ParcoursManager($pdo);
 $villeManager = new VilleManager($pdo);
-
 $villes = $villeManager->getAllVille();
 
 if (empty($_POST['vil_num'])) {
@@ -41,6 +40,8 @@ if (empty($_POST['vil_num'])) {
     <?php
 } else {
     $_SESSION['vil_num'] = $_POST['vil_num'];
+    $villesArrivee = $parcoursManager->getVilNumInParcours($_SESSION['vil_num']);
+    var_dump($villesArrivee);
     ?>
     <form action ="#" method ="post">
         <div class="row">
@@ -50,7 +51,7 @@ if (empty($_POST['vil_num'])) {
                         <label for="vil_num1">Ville de départ</label>
                     </div>
                     <div class="col-lg-6">
-                        <?php echo $villeManager->getVilNom($_POST['vil_num'])->vil_nom ?>
+                        <?php echo $villeManager->getVilNom($_SESSION['vil_num'])->vil_nom ?>
                     </div>
                 </div>
 
@@ -84,9 +85,9 @@ if (empty($_POST['vil_num'])) {
                     </div>
                     <div class="col-lg-6">
                         <select class="form-control" name="vil_num2" id="vil_num2">
-                            <option value="0">Sélectionnez la ville</option>
+                            <option value="">Sélectionnez la ville</option>
                             <?php
-                                foreach ($villes as $ville) {
+                                foreach ($villesArrivee as $ville) {
                                 ?>
                                 <option value="<?php echo $ville->getVilNum() ?>"><?php echo $ville->getVilNom() ?></option>
                                 <?php
@@ -121,18 +122,32 @@ if (!empty($_POST['vil_num2'])) {
     $proposeManager = new ProposeManager($pdo);
 
     $parcours = $parcoursManager->getParcoursByVilNums($_SESSION['vil_num'], $_POST['vil_num2']);
+    var_dump($parcours);
 
-    $propose = new Propose($_POST);
-    var_dump($_SESSION);
-    $propose->setPerNum($_SESSION['per_num']);
-    $propose->setParNum($parcours->getParNum());
+    if ($parcours == NULL)
+        $parcours = $parcoursManager->getParcoursByVilNums($_POST["vil_num2"], $_SESSION["vil_num"]);
+
+    var_dump($parcours);
 
     if ($parcours->getVilNum1() == $_SESSION['vil_num'])
         $sens = 0;
     else
         $sens = 1;
 
-    $propose->setProSens($sens);
+    $propose = new Propose(
+        array(
+            'per_num' => $_SESSION['user_num'],
+            'pro_date' => $_POST['pro_date'],
+            'pro_time' => $_POST['pro_time'],
+            'pro_place' => $_POST['pro_place'],
+            'pro_sens' => $sens,
+        )
+    );
+
+    var_dump($parcours->getParNum());
+
+    $propose->setParNum($parcours->getParNum());
+
     var_dump($propose);
 
     $proposeManager->add($propose);

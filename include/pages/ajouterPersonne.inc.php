@@ -174,7 +174,11 @@ if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST
 
     if ($personneManager->isLoginAlreadyRegistered($_SESSION['per_login'])) {
         ?>
+    <h1>Ajouter une personne</h1>
     <p class="alert alert-danger">Une personne utilise déjà ce login.</p>
+    <p class="text-center">
+        <a href="index.php?page=1" class="btn btn-default">Recommencer</a>
+    </p>
         <?php
     } else {
         $personne = new Personne (
@@ -215,13 +219,12 @@ if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST
             $etudiantManager->add($etudiant);
         }
         ?>
-        <div class="row col-md-8 col-md-offset-2">
-            <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée</p>
-            <p class="text-center">
-                <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
-                <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir le profil de la nouvelle personne</a>
-            </p>
-        </div>
+        <h1>Ajouter une personne</h1>
+        <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée.</p>
+        <p class="text-center">
+            <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
+            <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir le profil de la nouvelle personne</a>
+        </p>
         <?php
     }
 }

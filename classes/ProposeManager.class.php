@@ -25,7 +25,7 @@ class ProposeManager {
     public function getAllPropose() {
         $listePropose = array();
 
-        $requete = $this->db->prepare("SELECT par_num, per_num, pro_date, pro_time, pro_place, pro_sens FROM propose ORDER BY num");
+        $requete = $this->db->prepare("SELECT par_num, per_num, pro_date, pro_time, pro_place, pro_sens FROM propose ORDER BY par_num");
         $requete->execute();
 
         while ($propose = $requete->fetch(PDO::FETCH_ASSOC)) {

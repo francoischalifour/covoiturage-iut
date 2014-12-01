@@ -75,10 +75,11 @@ body {
     box-shadow: 0 5px 16px .0 rgba(0,0,0,.16);
 }
 
-.dropdown-menu li:not(.divider) {
-    padding: 4px 0;
+.dropdown-menu li a {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
-.dropdown-menu li:not(.divider):hover {
+.dropdown-menu li a:hover {
     background-color: #f9f9f9;
 }

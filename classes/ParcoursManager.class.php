@@ -56,6 +56,27 @@ class ParcoursManager {
         $requete->execute();
         $resultat = $requete->fetch(PDO::FETCH_ASSOC);
 
-        return new Parcours($resultat);
+        if ($resultat != null)
+            return new Parcours($resultat);
+        else
+            return null;
+    }
+
+    public function getVilNumInParcours($vil_num) {
+        $listeVilles = array();
+        $villeManager = new VilleManager($this->db);
+        $requete = "SELECT vil_num1 AS vil_num FROM parcours WHERE vil_num2 = :vil_num
+                                UNION
+                                SELECT vil_num2 FROM parcours WHERE vil_num1 = :vil_num";
+        $requete = $this->db->prepare($requete);
+        $requete->bindValue(":vil_num", $vil_num);
+
+        $requete->execute();
+
+        while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+            $listeVilles[] = $villeManager->getVilNom($ligne["vil_num"]);
+        }
+
+        return $listeVilles;
     }
 }

@@ -43,7 +43,7 @@ if (!isset($_POST['per_login'])) {
         ?>
 <p class="alert alert-danger">Vos identifiants sont incorrects.</p>
 <div class="text-center">
-    <a href="index.php?page=11" class="btn btn-default">Recommencer</a>
+    <button onclick="history.back()" class="btn btn-default">Recommencer</button>
 </div>
         <?php
     } else {

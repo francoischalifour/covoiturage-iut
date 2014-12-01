@@ -1,4 +1,10 @@
-<?php session_destroy(); ?>
+<?php
+if (!isset($_SESSION['user_login'])) {
+    header('Location: index.php');
+}
+
+session_destroy();
+?>
 <h1>Déconnexion</h1>
 <p class="alert alert-success">Vous êtes maintenant déconnecté.</p>
 <div class="text-center">
