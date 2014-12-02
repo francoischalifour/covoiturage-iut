@@ -63,7 +63,7 @@ body {
     min-height: 124px;
     border-top: 1px solid #ddd;
     text-align: center;
-    box-shadow: 0 -3px 10px 0 rgba(188,188,188,.16);
+    box-shadow: 0 -3px 10px 0 rgba(188,188,188,.4);
 }
 
 .pointer {

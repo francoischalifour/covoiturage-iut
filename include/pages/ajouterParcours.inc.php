@@ -76,7 +76,7 @@ $villes = $villeManager->getAllVille();
 
     if (!$reponse) {
         ?>
-    <p class="alert alert-danger">Ce parcours est déjà référencé.</p>
+    <p class="alert alert-warning">Ce parcours est déjà référencé.</p>
         <?php
     } else {
         ?>
@@ -88,7 +88,7 @@ $villes = $villeManager->getAllVille();
         }
         ?>
     <div class="text-center">
-        <a href="index.php?page=6" class="btn btn-default">Retour à la liste des parcours</a>
+        <a href="index.php?page=6" class="btn btn-primary btn-flat">Retour à la liste des parcours</a>
     </div>
     <?php
 }

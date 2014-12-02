@@ -25,7 +25,7 @@ if (empty($_POST['vil_nom'])) {
 
     if ($villeManager->isVilleAlreadyRegistered($_POST['vil_nom'])) {
         ?>
-    <p class="alert alert-danger">Cette ville est déjà référencée.</p>
+    <p class="alert alert-warning">Cette ville est déjà référencée.</p>
     <div class="text-center">
         <a href="index.php?page=7" class="btn btn-primary btn-flat">Recommencer</a>
     </div>

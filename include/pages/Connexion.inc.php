@@ -1,10 +1,13 @@
-<?php
-if (isset($_SESSION['user_login'])) {
-    header('Location: index.php');
-}
-?>
  <h1>Connexion</h1>
 <?php
+if (isConnected()) {
+    ?>
+    <p class="alert alert-warning">Vous êtes déjà connecté.</p>
+    <div class="text-center">
+        <a href="index.php" class="btn btn-primary">Revenir à l'accueil</a>
+    </div>
+    <?php
+} else {
 require_once("include/autoload.inc.php");
 
 if (!isset($_POST['per_login'])) {
@@ -37,9 +40,9 @@ if (!isset($_POST['per_login'])) {
     $pdo = new MyPdo();
     $personneManager = new PersonneManager($pdo);
 
-    $connexion = $personneManager->verifPersonne($_POST['per_login'], $_POST['per_pwd']);
+    $identifiantsOk = $personneManager->verifPersonne($_POST['per_login'], $_POST['per_pwd']);
 
-    if (!$connexion) {
+    if (!$identifiantsOk) {
         ?>
 <p class="alert alert-danger">Vos identifiants sont incorrects.</p>
 <div class="text-center">
@@ -58,4 +61,5 @@ if (!isset($_POST['per_login'])) {
 </div>
 <?php
     }
+}
 }

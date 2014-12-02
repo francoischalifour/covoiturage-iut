@@ -138,14 +138,14 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
         <?php
     } else {
         ?>
-    <table class="table">
+    <table class="table sortable">
         <tr>
-            <th>Ville de départ</th>
-            <th>Ville d'arrivée</th>
-            <th>Date de départ</th>
-            <th>Heure de départ</th>
-            <th>Nombre de places</th>
-            <th>Nom du covoitureur</th>
+            <th class="pointer">Ville de départ</th>
+            <th class="pointer">Ville d'arrivée</th>
+            <th class="pointer">Date de départ</th>
+            <th class="pointer">Heure de départ</th>
+            <th class="pointer">Nombre de places</th>
+            <th class="pointer">Nom du covoitureur</th>
         </tr>
         <?php
         foreach ($resultats as $resultat) {
@@ -171,7 +171,7 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
     ?>
 
     <div class="text-center">
-        <a href="index.php?page=10" class="btn btn-default">Faire une nouvelle recherche</a>
+        <a href="index.php?page=10" class="btn btn-primary btn-flat">Faire une nouvelle recherche</a>
     </div>
     <?php
 }
