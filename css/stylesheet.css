@@ -66,6 +66,16 @@ body {
     box-shadow: 0 -3px 10px 0 rgba(188,188,188,.4);
 }
 
+.description-info {
+    text-align: left;
+}
+
+@media(min-width: 1024px) {
+    .description-info {
+        text-align: center;
+    }
+}
+
 .pointer {
     cursor: pointer;
 }
