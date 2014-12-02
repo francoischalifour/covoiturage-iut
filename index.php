@@ -1,5 +1,5 @@
 <?php require_once("include/header.inc.php"); ?>
-<div class="row">
+<div class="row row-main">
     <div class="col-md-12">
         <div class="container">
             <div class="row">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("include/functions.inc.php");
-$title = "Covoiturage de l'IUT, partagez plus que votre véhicule !";
+$title = "Covoit'IUT";
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,12 +17,12 @@ $title = "Covoiturage de l'IUT, partagez plus que votre véhicule !";
         <link rel="icon" href="image/logo.png" />
     </head>
     <body>
-        <div class="navbar">
+        <div class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <a href="index.php" class="navbar-brand" title="Aller à l'accueil">
                         <img src="image/logo.png" alt="Logo" height="50" class="pull-left">
-                        <span>Covoiturage de l'IUT</span>
+                        <span><?php echo $title ?></span>
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">

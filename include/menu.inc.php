@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel panel-home">
    <div class="panel-heading">
       <h4><a href="index.php?page=0"><i class="mdi-social-public"></i> Accueil</a></h4>
     </div>

@@ -2,10 +2,24 @@ body {
     overflow-x: hidden;
 }
 
+.navbar-fixed-top {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.16);
+}
+
 .navbar-brand span {
     padding-left: 24px;
     font-size: 1.1em;
     line-height: 2.2;
+}
+
+.row-main {
+    margin-top: 154px;
+}
+
+@media(min-width: 768px) {
+    .row-main {
+        margin-top: 100px;
+    }
 }
 
 @media(min-width:1400px) {
@@ -26,6 +40,21 @@ body {
 .panel-heading + .panel-body {
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.panel-home .panel-heading {
+    padding: 0 8px;
+}
+
+.panel-heading h4 a {
+    display: block;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 3px;
+}
+
+.panel-heading h4 a:hover {
+    background-color: #f7f7f7;
 }
 
 .panel-menu ul {
