@@ -17,7 +17,7 @@ if ($personneManager->isEmpty()) {
 ?>
 <table class="table sortable">
     <tr>
-        <th class="pointer">Numéro</th>
+        <th class="pointer">#</th>
         <th class="pointer">Prénom</th>
         <th class="pointer">Nom</th>
     </tr>
@@ -34,6 +34,10 @@ if ($personneManager->isEmpty()) {
 }
     ?>
 </table>
+
+<div class="text-center">
+    <a href="index.php?page=1" class="btn btn-primary btn-flat">Ajouter une nouvelle personne</a>
+</div>
 <?php
 } else {
     $numero = $_GET['user'];

@@ -10,7 +10,7 @@ $villes = $villeManager->getAllVille();
 
 <table class="table sortable">
     <tr>
-        <th class="pointer">Numéro</th>
+        <th class="pointer">#</th>
         <th class="pointer">Nom</th>
     </tr>
     <?php

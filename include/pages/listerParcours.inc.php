@@ -11,7 +11,7 @@ $parcours = $parcoursManager->getAllParcours();
 
 <table class="table sortable">
     <tr>
-        <th class="pointer">Numéro</th>
+        <th class="pointer">#</th>
         <th class="pointer">Ville de départ</th>
         <th class="pointer">Ville d'arrivée</th>
         <th class="pointer">Nombre de kilomètres</th>
