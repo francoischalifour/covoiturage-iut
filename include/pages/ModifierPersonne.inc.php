@@ -171,7 +171,7 @@ if (empty($_GET['user'])) {
             <p class="alert alert-success">La personne a bien été modifiée.</p>
             <p class="text-center">
                 <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
-                <a href="index.php?page=2&user=<?php echo $_SESSION['user_num'] ?>" class="btn btn-default">Retour au profil</a>
+                <a href="index.php?page=2&user=<?php echo $_SESSION['user_num'] ?>" class="btn btn-primary btn-flat">Retour au profil</a>
             </p>
             <?php
             }

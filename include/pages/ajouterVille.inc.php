@@ -10,7 +10,7 @@ if (empty($_POST['vil_nom'])) {
                 <label for="vil_nom">Nom de la ville</label>
             </div>
             <div class="col-lg-10">
-                <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom" pattern="[a-zA-Z-éêèàçïî]{2,20}" title="Le nom de la ville doit comporté au moins 3 caractères." required="required">
+                <input type="text" placeholder="Nom de la ville" class="form-control" name="vil_nom" pattern="[a-zA-Z-éêèàçïî ]{2,20}" title="Le nom de la ville doit comporté au moins 3 caractères." required="required">
             </div>
         </div>
 

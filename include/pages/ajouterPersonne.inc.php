@@ -223,7 +223,7 @@ if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST
         <p class="alert alert-success">La personne <strong><?php echo $_SESSION['per_prenom'] ?> <?php echo $_SESSION['per_nom'] ?></strong> a bien été ajoutée.</p>
         <p class="text-center">
             <a href="index.php?page=2" class="btn btn-primary">Revenir à la liste des personnes</a>
-            <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-default">Voir son profil</a>
+            <a href="index.php?page=2&user=<?php echo $numPersonne ?>" class="btn btn-primary btn-flat">Voir son profil</a>
         </p>
         <?php
     }
