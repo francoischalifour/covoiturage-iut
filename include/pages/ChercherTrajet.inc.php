@@ -17,13 +17,13 @@ if (empty($_POST['vil_num']) && empty($_POST['vil_num2'])) {
     $proposeManager = new ProposeManager($pdo);
     $villes = $proposeManager->getAllVilleDepart();
     ?>
-    <form action ="#" method ="post">
+    <form action ="#" method ="post" id="formVille">
         <div class="row form-group">
             <div class="col-lg-2">
                 <label for="vil_num">Ville de départ</label>
             </div>
             <div class="col-lg-10">
-                <select class="form-control" name="vil_num" id="vil_num" required="required">
+                <select class="form-control" name="vil_num" id="vil_num" onChange="document.getElementById('formVille').submit()" required="required">
                     <option value="">Sélectionnez la ville</option>
                     <?php
                         foreach ($villes as $ville) {
