@@ -62,23 +62,28 @@ $villes = $villeManager->getAllVille();
 </form>
 <?php
 } else {
-    $db = new Mypdo();
-    $manager = new ParcoursManager($db);
+    if ($_POST['vil_num1'] == $_POST['vil_num2']) {
+        ?>
+    <p class="alert alert-danger">Vous ne pouvez pas établir de parcours entre deux mêmes villes.</p>
+        <?php
+    } else {
+        $db = new Mypdo();
+        $manager = new ParcoursManager($db);
 
-    $parcours = new Parcours (
-        array(
-            'par_km' => $_POST['par_km'],
-            'vil_num1' => $_POST['vil_num1'],
-            'vil_num2' => $_POST['vil_num2']
-            )
-        );
-    $reponse = $manager->add($parcours);
+        $parcours = new Parcours (
+            array(
+                'par_km' => $_POST['par_km'],
+                'vil_num1' => $_POST['vil_num1'],
+                'vil_num2' => $_POST['vil_num2']
+                )
+            );
+        $reponse = $manager->add($parcours);
 
-    if (!$reponse) {
+     if (!$reponse) {
         ?>
     <p class="alert alert-warning">Ce parcours est déjà référencé.</p>
         <?php
-    } else {
+       } else {
         ?>
     <p class="alert alert-success">Le parcours entre
     <strong><?php echo $villeManager->getVilNom($parcours->getVilNum1()) ?></strong> et
@@ -86,7 +91,8 @@ $villes = $villeManager->getAllVille();
     (<strong><?php echo $_POST['par_km'] ?> km</strong>).</p>
         <?php
         }
-        ?>
+    }
+    ?>
     <div class="text-center">
         <a href="index.php?page=6" class="btn btn-primary btn-flat">Retour à la liste des parcours</a>
     </div>

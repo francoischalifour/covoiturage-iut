@@ -137,8 +137,8 @@ if ($personneManager->isEmpty()) {
         <p>Cette action entrainera la suppression de toutes les données relatives à cette personne.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Non</button>
-         <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-flat">Oui</a>
+            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Non</button>
+            <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-flat">Oui</a>
       </div>
     </div>
   </div>

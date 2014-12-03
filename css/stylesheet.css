@@ -122,3 +122,7 @@ body {
 .dropdown-menu li a:hover {
     background-color: #f9f9f9;
 }
+
+.modal-footer .btn {
+    margin: 0;
+}

@@ -23,25 +23,34 @@ if (empty($_POST['vil_nom'])) {
     $db = new Mypdo();
     $villeManager = new VilleManager($db);
 
-    if ($villeManager->isVilleAlreadyRegistered($_POST['vil_nom'])) {
+    if (strlen(trim($_POST['vil_nom'])) < 2) {
+        ?>
+    <p class="alert alert-warning">Le nom de la ville n'est pas valide.</p>
+    <div class="text-center">
+        <a href="index.php?page=7" class="btn btn-primary btn-flat">Recommencer</a>
+    </div>
+        <?php
+    } else {
+        if ($villeManager->isVilleAlreadyRegistered($_POST['vil_nom'])) {
         ?>
     <p class="alert alert-warning">Cette ville est déjà référencée.</p>
     <div class="text-center">
         <a href="index.php?page=7" class="btn btn-primary btn-flat">Recommencer</a>
     </div>
         <?php
-    } else {
-        $ville = new Ville (
-            array(
-                'vil_nom' => $_POST['vil_nom'],
-                )
-            );
-        $villeManager->add($ville);
+        } else {
+            $ville = new Ville (
+                array(
+                    'vil_nom' => $_POST['vil_nom'],
+                    )
+                );
+            $villeManager->add($ville);
         ?>
     <p class="alert alert-success">La ville <strong><?php echo $_POST['vil_nom'] ?></strong> a bien été ajoutée.</p>
     <div class="text-center">
-        <a href="index.php?page=8" class="btn btn-default">Retour à la liste des villes</a>
+        <a href="index.php?page=8" class="btn btn-primary btn-flat">Retour à la liste des villes</a>
     </div>
         <?php
+        }
     }
 }
