@@ -12,7 +12,7 @@ require_once("include/autoload.inc.php");
 
 if (!isset($_POST['per_login'])) {
 ?>
-<form action="#" method="post" id="loginForm">
+<form action="#" method="post">
     <div class="row form-group">
         <div class="col-lg-2">
             <label for="per_login">Nom d'utilisateur</label>
