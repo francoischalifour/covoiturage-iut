@@ -12,7 +12,7 @@ require_once("include/autoload.inc.php");
 
 if (!isset($_POST['per_login'])) {
 ?>
-<form action="#" method="post">
+<form action="#" method="post" id="loginForm">
     <div class="row form-group">
         <div class="col-lg-2">
             <label for="per_login">Nom d'utilisateur</label>
@@ -31,8 +31,18 @@ if (!isset($_POST['per_login'])) {
         </div>
     </div>
 
+    <div class="row form-group" id="checkRobot">
+        <div class="col-lg-2">
+            <label for="per_pwd">Je ne suis pas un robot</label>
+        </div>
+        <div class="col-lg-10">
+            <p><button type="button" class="btn btn-primary btn-fab mdi-action-accessibility" id="pressHuman"></button>
+            &nbsp;Maintenir le bouton <strong>1 seconde</strong></p>
+        </div>
+    </div>
+
     <div class="form-group text-center">
-        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <button type="submit" class="btn btn-primary" id="login" disabled="disabled">Se connecter</button>
     </div>
 </form>
 <?php
