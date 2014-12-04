@@ -1,4 +1,6 @@
 <?php
+$javascripts = '<script src="js/sorttable.js"></script>
+';
 require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();

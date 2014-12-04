@@ -66,6 +66,10 @@ $villes = $villeManager->getAllVille();
         ?>
     <p class="alert alert-danger">Vous ne pouvez pas établir de parcours entre deux mêmes villes.</p>
         <?php
+    } else if ($_POST['par_km'] > 1500) {
+        ?>
+    <p class="alert alert-danger">Le kilométrage n'est pas respecté.</p>
+        <?php
     } else {
         $db = new Mypdo();
         $manager = new ParcoursManager($db);

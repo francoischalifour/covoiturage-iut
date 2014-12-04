@@ -1,5 +1,12 @@
 <h1>Rechercher un trajet</h1>
 <?php
+$javascripts = '<script src="js/moment.js"></script>
+    <script src="js/datetimepicker.js"></script>
+    <script src="js/sorttable.js"></script>
+    <script src="js/datepicker.opt.js"></script>
+    <script src="js/timepicker.opt.js"></script>
+';
+
 if (!isConnected()) {
     ?>
     <p>Vous devez être connecté pour accéder à cette page.</p>

@@ -7,6 +7,7 @@
                     <?php require_once("include/menu.inc.php"); ?>
                 </div>
                 <div class="col-md-9">
+                <?php var_dump($_SESSION); ?>
                     <?php require_once("include/texte.inc.php");  ?>
                 </div>
             </div>

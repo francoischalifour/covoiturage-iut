@@ -1,4 +1,7 @@
 <?php
+$javascripts = '<script src="js/sorttable.js"></script>
+';
+
 require_once("include/autoload.inc.php");
 
 $pdo = new MyPdo();
@@ -119,27 +122,26 @@ if ($personneManager->isEmpty()) {
             <a href="index.php?page=3&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-primary">Modifier</a>
             <button type="button" class="btn btn-warning btn-flat" data-toggle="modal" data-target="#supprimerPersonne">Supprimer</button>
         </div>
+
+        <div class="modal fade" id="supprimerPersonne" tabindex="-1" role="dialog" aria-labelledby="supprimerPersonne" >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                <h4 class="modal-title">Êtes-vous sûr de vouloir supprimer votre compte ?</h4>
+              </div>
+              <div class="modal-body">
+                <p>Cette action entrainera la suppression de toutes vos données.</p>
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Non</button>
+                    <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-flat">Oui</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <?php
             }
         }
     }
 }
-?>
-
-<div class="modal fade" id="supprimerPersonne" tabindex="-1" role="dialog" aria-labelledby="supprimerPersonne" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-        <h4 class="modal-title">Êtes-vous sûr de vouloir supprimer cette personne ?</h4>
-      </div>
-      <div class="modal-body">
-        <p>Cette action entrainera la suppression de toutes les données relatives à cette personne.</p>
-      </div>
-      <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Non</button>
-            <a href="index.php?page=4&amp;user=<?php echo $personne->getPerNum() ?>" class="btn btn-primary btn-flat">Oui</a>
-      </div>
-    </div>
-  </div>
-</div>

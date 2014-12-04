@@ -1,5 +1,8 @@
  <h1>Connexion</h1>
 <?php
+$javascripts = '<script src="js/antibot.js"></script>
+';
+
 if (isConnected()) {
     ?>
     <p class="alert alert-warning">Vous êtes déjà connecté.</p>

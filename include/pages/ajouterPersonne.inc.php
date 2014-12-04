@@ -67,18 +67,20 @@ if ((empty($_POST['per_nom']) || empty($_POST['per_prenom']) || empty($_POST['pe
         </div>
 
         <div class="row form-group">
-            <div class="col-lg-1">
-                <label for="per_cat">Catégorie</label>
-            </div>
+            <label class="col-lg-1 control-label">Catégorie</label>
             <div class="col-lg-11">
-                <ul class="list-unstyled">
-                    <li>
-                        <label for="1"><input type="radio" name="per_cat" id="1" value="1" checked="checked"> Etudiant</label>
-                    </li>
-                    <li>
-                        <label for="2"><input type="radio" name="per_cat" id="2" value="2"> Personnel</label>
-                    </li>
-                </ul>
+                <div class="radio radio-primary">
+                    <label>
+                        <input type="radio" name="per_cat" id="1" value="1" checked="checked">
+                        Etudiant
+                    </label>
+                </div>
+                <div class="radio radio-primary">
+                    <label>
+                        <input type="radio" name="per_cat" id="2" value="2">
+                        Personnel
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -177,7 +179,7 @@ if (!empty($_SESSION['per_nom']) && ((!empty($_POST['dep_num']) && !empty($_POST
     <h1>Ajouter une personne</h1>
     <p class="alert alert-danger">Une personne utilise déjà ce login.</p>
     <div class="text-center">
-        <a href="index.php?page=1" class="btn btn-default">Recommencer</a>
+        <a href="index.php?page=1" class="btn btn-primary btn-flat">Recommencer</a>
     </div>
         <?php
     } else {
