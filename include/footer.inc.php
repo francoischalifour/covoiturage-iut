@@ -55,7 +55,9 @@
         $("#pressHuman").on('mouseup', function(e) {
             if (new Date().getTime() >= (start + longpress)) {
                 $('#login').removeAttr('disabled');
-                $('#pressHuman').removeClass('mdi-action-accessibility').removeClass('btn-primary').addClass('mdi-action-done').addClass('btn-success');
+                $('#pressHuman').removeClass('mdi-action-accessibility').removeClass('btn-primary').removeClass('btn-warning').addClass('mdi-action-done').addClass('btn-success');
+            } else {
+                $('#pressHuman').removeClass('btn-primary').addClass('btn-warning');
             }
         });
     });
