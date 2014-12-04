@@ -32,6 +32,34 @@ body {
     border-radius: 0;
 }
 
+@media(max-width: 991px) {
+    .panel-block {
+        width: 25%;
+        float: left;
+        min-height: 150px;
+        border-right: 5px solid #eee;
+        box-sizing: border-box;
+    }
+
+    .panel-block:last-child {
+        border: none;
+    }
+}
+
+@media(max-width: 640px) {
+    .panel-block {
+        width: 50%;
+        float: left;
+        min-height: 120px;
+        border-right: 5px solid #eee;
+        box-sizing: border-box;
+    }
+
+    .panel-block:last-child {
+        border: none;
+    }
+}
+
 .panel-heading.panel-menu {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -74,7 +102,7 @@ body {
     text-decoration: none;
 }
 
-@media(max-width:990px) {
+@media(max-width:991px) {
     .panel-menu li {
         display: inline-block;
     }
@@ -99,7 +127,7 @@ body {
     text-align: left;
 }
 
-@media(min-width:1024px) {
+@media(min-width:991px) {
     .description-info {
         text-align: center;
     }

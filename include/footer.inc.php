@@ -12,6 +12,11 @@
     <script src="js/moment.js"></script>
     <script src="js/datetimepicker.js"></script>
     <script src="js/sorttable.js"></script>
+    <script>
+    $(function() {
+        $.material.init();
+      });
+    </script>
     <script type="text/javascript">
     $(function () {
         $('#datepicker').datetimepicker({
@@ -30,14 +35,7 @@
     });
     </script>
     <script>
-    $(function() {
-        // Régler le conflit entre les deux scripts
-        if (!$('#datepicker').length) {
-            $.material.init();
-        }
-      });
-    </script>
-    <script>
+    // Vérification anti-robot lors de la connexion
     $(function() {
         var longpress = 1000;
         var start;
