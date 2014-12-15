@@ -80,7 +80,7 @@ if ($personneManager->isEmpty()) {
                 <td><?php echo $personne->getPerPrenom() ?></td>
                 <td><?php echo $personne->getPerNom() ?></td>
                 <td><?php echo $personne->getPerMail() ?></td>
-                <td><?php echo $personne->getPerTel() ?></td>
+                <td id="showPhoneNumber"><span class="pointer"><i class="mdi-communication-call"></i> Voir le numéro</span></td>
                 <td><?php echo $departementManager->getDepNom($etudiant->getDepNum())->dep_nom ?></td>
                 <td><?php echo $divisionManager->getDivNom($etudiant->getDivNum())->div_nom ?></td>
             </tr>
@@ -106,7 +106,7 @@ if ($personneManager->isEmpty()) {
                     <td><?php echo $personne->getPerPrenom() ?></td>
                     <td><?php echo $personne->getPerNom() ?></td>
                     <td><?php echo $personne->getPerMail() ?></td>
-                    <td><?php echo $personne->getPerTel() ?></td>
+                    <td id="showPhoneNumber"><span class="pointer"><i class="mdi-communication-call"></i> Voir le numéro</span></td>
                     <td><?php echo $salarie->getSalTelProf() ?></td>
                     <td><?php echo $fonctionManager->getFonNom($salarie->getFonNum())->fon_libelle ?></td>
                 </tr>
