@@ -10,7 +10,7 @@
     <script src="js/material.js"></script>
     <script src="js/ripples.js"></script>
     <?php if (!empty($javascripts)) echo $javascripts ?>
-    <?php if ($_GET['page'] == 2 && !empty($_GET['user'])) { ?>
+    <?php if (!empty($_GET['page']) && $_GET['page'] == 2 && !empty($_GET['user'])) { ?>
     <script>
     if ($('#showPhoneNumber').length) {
         $('#showPhoneNumber').on('click', function() {
